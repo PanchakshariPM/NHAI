@@ -13,11 +13,10 @@ export class RecommendationComponent implements OnInit {
   public recommendationTotal: any = this.recommendationData.length;
   public response: any;
 
-  constructor
-    (
-      public dashboardService: DashboardService
-    ) {
-    this.dashboardService.dashboardAlertResponse.subscribe((res) => {
+  constructor(
+    public dashboardService: DashboardService
+  ) {
+    this.dashboardService.dashboardRecommendationResponse.subscribe((res) => {
       this.recommendationData = res.data;
       this.recommendationTotal = this.recommendationData ? this.recommendationData.length : [];
     });

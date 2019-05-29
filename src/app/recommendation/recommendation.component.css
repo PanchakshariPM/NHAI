@@ -27,7 +27,7 @@ li {
 
 /* SCROLL SECTION */
 .showScroll {
-    height: 47.85vh;
+    height: 42vh;
     overflow-y: auto;
 }
 

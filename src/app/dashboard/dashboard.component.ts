@@ -29,6 +29,12 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  getRecommendation() {
+    this.dashboardService.getRecommendation().subscribe((res: any) => {
+
+    });
+  }
+
   getTableData() {
     this.dashboardService.getTollTableData().subscribe((res: any) => {
 
@@ -45,6 +51,7 @@ export class DashboardComponent implements OnInit {
     this.getAlerts();
     this.getStatData();
     this.getTableData();
+    this.getRecommendation();
   }
 
 }

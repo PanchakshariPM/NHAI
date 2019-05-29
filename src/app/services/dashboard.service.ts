@@ -66,8 +66,10 @@ export class DashboardService {
 
     // Get Alerts
     getAlerts(): Observable<any> {
-        const url = this.endPointAddress + '/dashboard_alerts_live';
-        return this.http.post<any>(url, {}, this.httpOptions)
+        //const url = this.endPointAddress + '/dashboard_alerts_live';
+        const url = this.oldEndPointAddress + '/getNewAlerts';
+        //return this.http.post<any>(url, {}, this.httpOptions)
+        return this.http.get<any>(url)
             .pipe(
                 map((response: any) => {
                     this.dashboardAlertResponse$.next(response);
@@ -78,8 +80,9 @@ export class DashboardService {
 
     // Get Recommendation
     getRecommendation(): Observable<any> {
-        const url = this.endPointAddress + '/api/labelling/createProject';
-        return this.http.post<any>(url, '', this.httpOptions)
+        const url = this.oldEndPointAddress + '/getCurrentRecommendation';
+        //const url = this.endPointAddress + '/api/labelling/createProject';
+        return this.http.post<any>(url, {}, this.httpOptions)
             .pipe(
                 map((response: any) => {
                     this.dashboardRecommendationResponse$.next(response);
