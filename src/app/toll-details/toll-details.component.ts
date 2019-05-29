@@ -15,6 +15,7 @@ export interface Food {
 }
 
 
+
 @Component({
   selector: 'app-toll-details',
   templateUrl: './toll-details.component.html',
@@ -25,10 +26,10 @@ export class TollDetailsComponent implements OnInit {
   data: any = [Math.random() * 300]
 
 
-  foods: Food[] = [
-    { value: 'steak-0', viewValue: 'Steak' },
-    { value: 'pizza-1', viewValue: 'Pizza' },
-    { value: 'tacos-2', viewValue: 'Tacos' }
+  filters: any = [
+    { value: 'daily', viewValue: 'Day' },
+    { value: 'weekly', viewValue: 'Week' },
+    { value: 'monthly', viewValue: 'Month' }
   ];
   toRangePicker: any;
   fromRangePicker: any;
@@ -66,8 +67,8 @@ export class TollDetailsComponent implements OnInit {
           }
         },
         show: true,
-        // min: '0',
-        // max: '-600',
+        min: '0',
+        max: '-600',
         axisLabel: {
           show: true,
           formatter: function (value) {
@@ -92,7 +93,7 @@ export class TollDetailsComponent implements OnInit {
           }
         },
         axisTick: { show: true },
-        data: ['Lane1', 'Lane2', 'Lane3', 'Lane4', 'Lane5', 'Lane6'],
+        data: [],
       }
     ],
     series: [
@@ -107,34 +108,7 @@ export class TollDetailsComponent implements OnInit {
             }
           }
         },
-        data: [
-          {
-            value: -220,
-            itemStyle: { color: '#fb8c00' },
-            // green 40dc7e
-            // amber:fb8c00
-          },
-          {
-            value: -300,
-            itemStyle: { color: '#ff0000' },
-          },
-          {
-            value: -150,
-            itemStyle: { color: '#fb8c00' },
-          },
-          {
-            value: -220,
-            itemStyle: { color: '#fb8c00' },
-          },
-          {
-            value: -300,
-            itemStyle: { color: '#ff0000' },
-          },
-          {
-            value: -100,
-            itemStyle: { color: '#40dc7e' },
-          }
-        ]
+        data: []
       }
     ]
   };
@@ -173,8 +147,8 @@ export class TollDetailsComponent implements OnInit {
           }
         },
         show: true,
-        // min: '0',
-        // max: '600',
+        min: '0',
+        max: '600',
       }
     ],
     yAxis: [
@@ -187,7 +161,7 @@ export class TollDetailsComponent implements OnInit {
           }
         },
         axisTick: { show: true },
-        data: ['Lane1', 'Lane2', 'Lane3', 'Lane4', 'Lane5', 'Lane6'],
+        data: [],
         position: 'right'
       }
     ],
@@ -202,39 +176,15 @@ export class TollDetailsComponent implements OnInit {
             position: 'left'
           }
         },
-        data: [
-          {
-            value: 220,
-            itemStyle: { color: '#fb8c00' },
-          },
-          {
-            value: 250,
-            itemStyle: { color: '#ff0000' },
-          },
-          {
-            value: 100,
-            itemStyle: { color: '#40dc7e' },
-          },
-          {
-            value: 220,
-            itemStyle: { color: '#fb8c00' },
-          },
-          {
-            value: 300,
-            itemStyle: { color: '#ff0000' },
-          },
-          {
-            value: 100,
-            itemStyle: { color: '#40dc7e' },
-          }
-        ]
+        data: []
       }
     ]
   };
 
-  option = {
+  optionForInboundForSimpleBarGraph = {
     xAxis: {
       type: 'category',
+      name: '',
       axisLine: {
         onZero: false,
         lineStyle: {
@@ -244,7 +194,7 @@ export class TollDetailsComponent implements OnInit {
       splitLine: {
         show: false,
       },
-      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+      data: []
     },
     yAxis: {
       type: 'value',
@@ -257,38 +207,101 @@ export class TollDetailsComponent implements OnInit {
     },
     series: [{
       data: [
-        {
-          value: 200,
-          itemStyle: { color: '#ff0000' },
-        },
-        {
-          value: 100,
-          itemStyle: { color: '#fa7b79' },
-        },
-        {
-          value: 500,
-          itemStyle: { color: '#40dc7e' },
-        },
-        {
-          value: 200,
-          itemStyle: { color: '#ff0000' },
-        },
-        {
-          value: 100,
-          itemStyle: { color: '#fa7b79' },
-        },
-        {
-          value: 200,
-          itemStyle: { color: '#ff0000' },
-        },
-        {
-          value: 100,
-          itemStyle: { color: '#fa7b79' },
-        }
+        // {
+        //   value: 200,
+        //   itemStyle: { color: '#ff0000' },
+        // },
+        // {
+        //   value: 100,
+        //   itemStyle: { color: '#fa7b79' },
+        // },
+        // {
+        //   value: 500,
+        //   itemStyle: { color: '#40dc7e' },
+        // },
+        // {
+        //   value: 200,
+        //   itemStyle: { color: '#ff0000' },
+        // },
+        // {
+        //   value: 100,
+        //   itemStyle: { color: '#fa7b79' },
+        // },
+        // {
+        //   value: 200,
+        //   itemStyle: { color: '#ff0000' },
+        // },
+        // {
+        //   value: 100,
+        //   itemStyle: { color: '#fa7b79' },
+        // }
       ],
       type: 'bar'
     }]
   };
+
+  updatedOptionForInboundBarGraph: any;
+  updatedOptionForOutBoundForSimpleBarGraph: any;
+
+  optionForOutboundForSimpleBarGraph = {
+    xAxis: {
+      type: 'category',
+      name: '',
+      axisLine: {
+        onZero: false,
+        lineStyle: {
+          color: 'white'
+        }
+      },
+      splitLine: {
+        show: false,
+      },
+      data: []
+    },
+    yAxis: {
+      type: 'value',
+      axisLine: {
+        onZero: false,
+        lineStyle: {
+          color: 'white'
+        }
+      },
+    },
+    series: [{
+      data: [
+        // {
+        //   value: 200,
+        //   itemStyle: { color: '#ff0000' },
+        // },
+        // {
+        //   value: 100,
+        //   itemStyle: { color: '#fa7b79' },
+        // },
+        // {
+        //   value: 500,
+        //   itemStyle: { color: '#40dc7e' },
+        // },
+        // {
+        //   value: 200,
+        //   itemStyle: { color: '#ff0000' },
+        // },
+        // {
+        //   value: 100,
+        //   itemStyle: { color: '#fa7b79' },
+        // },
+        // {
+        //   value: 200,
+        //   itemStyle: { color: '#ff0000' },
+        // },
+        // {
+        //   value: 100,
+        //   itemStyle: { color: '#fa7b79' },
+        // }
+      ],
+      type: 'bar'
+    }]
+  };
+
 
   optionForPeakHourCongestion = {
     title: {
@@ -302,6 +315,9 @@ export class TollDetailsComponent implements OnInit {
     xAxis: [
       {
         type: 'category',
+        name: 'Hours',
+        nameGap: '39',
+        nameLocation: 'middle',
         splitLine: {
           show: false
         },
@@ -312,12 +328,17 @@ export class TollDetailsComponent implements OnInit {
           }
         },
         boundaryGap: false,
-        data: ['1', '2', '3', '4', '5', '6', '7']
+        data: []
       }
     ],
     yAxis: [
       {
         type: 'value',
+        name: 'Average Congestion Length in mtrs.',
+        nameGap: '27',
+        // min: '0',
+        // max: '550',
+        nameLocation: 'middle',
         splitLine: {
           show: true,
           lineStyle: {
@@ -332,15 +353,15 @@ export class TollDetailsComponent implements OnInit {
           }
         },
         axisLabel: {
-          formatter: '{value} °C'
+          // formatter: '{value} °C'
         }
       }
     ],
     series: [
       {
-        name: 'Test',
+        name: 'Congestion',
         type: 'line',
-        data: [11, 11, 15, 13, 12, 13, 10],
+        data: [],
         markPoint: {
           data: [
             { type: 'max', name: 'Peek' },
@@ -356,11 +377,19 @@ export class TollDetailsComponent implements OnInit {
     ]
   };
 
+  updatedOptionForPeekHourHourCongestion: any;
+
   objForLaneWiseGraph: any = {
     toll_plaza_id: ''
   }
-
+  displayNoSensorsCondition: boolean = false;
   updatedOptionForInbound: any = {};
+  updatedOptionForOutBound: any = {};
+
+  objForgetGraphs: any = {
+    toll_plaza_id: '',
+    date: ''
+  }
 
   public recommendationData = [];
 
@@ -370,7 +399,12 @@ export class TollDetailsComponent implements OnInit {
   public alertsData = [];
 
   public alertsTotal: any = this.alertsData.length;
-
+  objForDailyGraph: any = {
+    toll_plaza_id: ''
+  }
+  objForContractorInfo: any = {
+    toll_plaza_id: ''
+  }
 
   constructor
     (
@@ -389,57 +423,193 @@ export class TollDetailsComponent implements OnInit {
       this.alertsTotal = this.alertsData ? this.alertsData.length : [];
     });
 
-    // this.dashboardService.tollPlazaInfoForTable.subscribe(response => {
-    //   // console.log('res from Observable:', response);
-    //   if (response != null && response != undefined) {
-    //     this.objForLaneWiseGraph.toll_plaza_id = parseInt(response.toll_plaza_id);
 
-    //     // console.log('-----', this.objForLaneWiseGraph);
+    this.dashboardService.tollPlazaInfoForTable.subscribe(response => {
 
-    //     this.restService.dailygraphversion2(this.objForLaneWiseGraph).subscribe(response => {
-    //       console.log('res from dailyGraphV2:', response);
-    //       // console.log('-----', this.objForLaneWiseGraph);
+      if (response != null && response != undefined) {
+        this.objForLaneWiseGraph.toll_plaza_id = parseInt(response.toll_plaza_id);
+        this.objForgetGraphs.toll_plaza_id = parseInt(response.toll_plaza_id);
+        this.objForDailyGraph.toll_plaza_id = parseInt(response.toll_plaza_id);
+        this.objForContractorInfo.toll_plaza_id = parseInt(response.toll_plaza_id);
+
+        this.restService.dailygraphversion2(this.objForLaneWiseGraph).subscribe(response => {
+          console.log('res from dailyGraphV2:', response);
+
+          if (response.data != null && response.data != undefined) {
+
+            this.optionForInbound.series[0].data = [];
+            this.updatedOptionForInbound = {};
+
+            this.optionForOutbound.series[0].data = [];
+            this.updatedOptionForOutBound = {};
+
+            response.data.traffic_A.forEach(element => {
+              let itemStyle = {
+                color: element.color
+              }
+
+              let graphObj = {
+                value: element.value * -1,
+                itemStyle: itemStyle
+              }
+
+              this.optionForInbound.series[0].data.push(graphObj);
+              let temp = [];
+
+              response.data.x_axis.forEach(element => {
+                temp.push(element);
+              });
+
+              this.optionForInbound.yAxis[0].data = temp;
+              this.optionForOutbound.yAxis[0].data = temp;
 
 
-    //       if (response.data != null && response.data != undefined) {
+              this.updatedOptionForInbound = Object.assign({}, this.optionForInbound);
 
-    //         response.data.traffic_A.forEach(element => {
-    //           let itemStyle = {
-    //             color: element.color
-    //           }
-
-    //           let graphObj = {
-    //             value: element.value * -1,
-    //             itemStyle: itemStyle
-    //           }
-
-    //           this.optionForInbound.series[0].data.push(graphObj);
-    //           // this.updatedOptionForInbound = Object.assign({}, this.optionForInbound);
-
-    //           let temp = [];
-
-    //           response.data.x_axis.forEach(element => {
-    //             let temp = [];
-    //             temp.push(element);
-    //             // this.optionForOutbound.yAxis.data.push(element);
-    //           });
-    //           this.optionForInbound.yAxis[0].data = temp;
-
-    //           this.updatedOptionForInbound = Object.assign({}, this.optionForInbound);
-
-    //         });
+            });
 
 
-    //       }
+            response.data.traffic_B.forEach(element => {
+              let itemStyle = {
+                color: element.color
+              }
+              let graphObj = {
+                value: element.value,
+                itemStyle: itemStyle
+              }
+              this.optionForOutbound.series[0].data.push(graphObj);
+              this.updatedOptionForOutBound = Object.assign({}, this.optionForOutbound);
+            });
 
-    //     })
-    //   }
-    // })
+          } else if (!response.data) {
+            this.displayNoSensorsCondition = true;
+          }
+
+        })
+      }
+    })
+
+    this.restService.getgraphs(this.objForgetGraphs).subscribe(response => {
+
+      this.optionForInboundForSimpleBarGraph.series[0].data = [];
+      this.optionForInboundForSimpleBarGraph.xAxis.data = [];
+      this.updatedOptionForInboundBarGraph = {};
+
+      this.optionForOutboundForSimpleBarGraph.series[0].data = [];
+      this.optionForOutboundForSimpleBarGraph.xAxis.data = [];
+      this.updatedOptionForOutBoundForSimpleBarGraph = {};
+
+      response.daily_inbound.forEach(element => {
+        this.optionForInboundForSimpleBarGraph.series[0].data.push(element.graph);
+        this.optionForInboundForSimpleBarGraph.xAxis.data.push(element.hour);
+        this.optionForInboundForSimpleBarGraph.xAxis.name = 'Hour of day';
+        this.updatedOptionForInboundBarGraph = Object.assign({}, this.optionForInboundForSimpleBarGraph);
+      })
+
+      response.daily_outbound.forEach(element => {
+        this.optionForOutboundForSimpleBarGraph.series[0].data.push(element.graph);
+        this.optionForOutboundForSimpleBarGraph.xAxis.data.push(element.hour);
+        this.optionForOutboundForSimpleBarGraph.xAxis.name = 'Hour of day';
+        this.updatedOptionForOutBoundForSimpleBarGraph = Object.assign({}, this.optionForOutboundForSimpleBarGraph);
+      })
+    })
+
+
+    this.restService.dailygraph(this.objForDailyGraph).subscribe(response => {
+      console.log('res from dailygraph:', response);
+      response.inbound.forEach(element => {
+        this.optionForPeakHourCongestion.series[0].data.push(element.graph);
+        this.optionForPeakHourCongestion.xAxis[0].data.push(element.hour);
+      });
+
+      this.updatedOptionForPeekHourHourCongestion = Object.assign({}, this.optionForPeakHourCongestion)
+    })
+
+    this.contractor_info();
+
 
   }
+
+
 
   ngOnInit() {
   }
 
+  contractor_info() {
+    this.restService.contractor_info(this.objForContractorInfo).subscribe(response => {
+      console.log('res for contractor_info:', response);
+    })
+  }
+
+
+
+  selectedParameter(parameter) {
+    this.objForgetGraphs.date.toUTCString();
+    this.restService.getgraphs(this.objForgetGraphs).subscribe(response => {
+      console.log('res for getgraphsAPI:', response);
+
+      this.optionForInboundForSimpleBarGraph.series[0].data = [];
+      this.optionForInboundForSimpleBarGraph.xAxis.data = [];
+      this.updatedOptionForInboundBarGraph = {};
+
+      this.optionForOutboundForSimpleBarGraph.series[0].data = [];
+      this.optionForOutboundForSimpleBarGraph.xAxis.data = [];
+      this.updatedOptionForOutBoundForSimpleBarGraph = {};
+
+      if (parameter == 'daily') {
+
+
+        response.daily_inbound.forEach(element => {
+          this.optionForInboundForSimpleBarGraph.series[0].data.push(element.graph);
+          this.optionForInboundForSimpleBarGraph.xAxis.data.push(element.hour);
+          this.optionForInboundForSimpleBarGraph.xAxis.name = 'Hour of day';
+          this.updatedOptionForInboundBarGraph = Object.assign({}, this.optionForInboundForSimpleBarGraph);
+        })
+
+        response.daily_outbound.forEach(element => {
+          this.optionForOutboundForSimpleBarGraph.series[0].data.push(element.graph);
+          this.optionForOutboundForSimpleBarGraph.xAxis.data.push(element.hour);
+          this.optionForOutboundForSimpleBarGraph.xAxis.name = 'Hour of day';
+          this.updatedOptionForOutBoundForSimpleBarGraph = Object.assign({}, this.optionForOutboundForSimpleBarGraph);
+        })
+      }
+
+      if (parameter == 'weekly') {
+
+        response.weekly_inbound.forEach(element => {
+          this.optionForInboundForSimpleBarGraph.series[0].data.push(element.graph);
+          this.optionForInboundForSimpleBarGraph.xAxis.data.push(element.day);
+          this.optionForInboundForSimpleBarGraph.xAxis.name = 'Days of the week'
+          this.updatedOptionForInboundBarGraph = Object.assign({}, this.optionForInboundForSimpleBarGraph);
+        })
+
+        response.weekly_outbound.forEach(element => {
+          this.optionForOutboundForSimpleBarGraph.series[0].data.push(element.graph);
+          this.optionForOutboundForSimpleBarGraph.xAxis.data.push(element.day);
+          this.optionForOutboundForSimpleBarGraph.xAxis.name = 'Days of the week'
+          this.updatedOptionForOutBoundForSimpleBarGraph = Object.assign({}, this.optionForOutboundForSimpleBarGraph);
+        })
+      }
+
+      if (parameter == 'monthly') {
+
+        response.monthly_inbound.forEach(element => {
+          this.optionForInboundForSimpleBarGraph.series[0].data.push(element.graph);
+          this.optionForInboundForSimpleBarGraph.xAxis.data.push(element.day);
+          this.optionForInboundForSimpleBarGraph.xAxis.name = 'Dates of the month';
+          this.updatedOptionForInboundBarGraph = Object.assign({}, this.optionForInboundForSimpleBarGraph);
+        })
+
+        response.monthly_outbound.forEach(element => {
+          this.optionForOutboundForSimpleBarGraph.series[0].data.push(element.graph);
+          this.optionForOutboundForSimpleBarGraph.xAxis.data.push(element.day);
+          this.optionForOutboundForSimpleBarGraph.xAxis.name = 'Dates of the month';
+          this.updatedOptionForOutBoundForSimpleBarGraph = Object.assign({}, this.optionForOutboundForSimpleBarGraph);
+        })
+      }
+
+    })
+
+  }
 
 }

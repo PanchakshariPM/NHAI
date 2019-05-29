@@ -58,7 +58,7 @@ export class RestService {
   dailygraph(graphInputData) {
     var graphInputData = graphInputData;
     return this.http
-      .post(endpointAddress + '/dailygraph', graphInputData, httpOptions)
+      .post('http://nhai.jaitra.com:8000/dailygraph', graphInputData, httpOptions)
       .pipe(map(this.extractData), catchError(this.handleError<any>('dailygraph')))
   }
 
@@ -74,8 +74,29 @@ export class RestService {
   getgraphs(graphInputData) {
     var graphInputData = graphInputData;
     return this.http
-      .post(endpointAddress + '/getgraphs', graphInputData, httpOptions)
+      .post('http://nhai.jaitra.com:8000/getgraphs', graphInputData, httpOptions)
       .pipe(map(this.extractData), catchError(this.handleError<any>('getgraphs')))
+  }
+
+  contractor_info(contractorInffo) {
+    var contractorInffo = contractorInffo;
+    return this.http
+      .post('http://nhai.jaitra.com:8000/contractor_info', contractorInffo, httpOptions)
+      .pipe(map(this.extractData), catchError(this.handleError<any>('getgraphs')))
+  }
+
+  getNewALertPlaza(tollId) {
+    var tollId = tollId;
+    return this.http
+      .post('http://nhai.jaitra.com:8000/getNewALertPlaza', tollId, httpOptions)
+      .pipe(map(this.extractData), catchError(this.handleError<any>('getNewALertPlaza')))
+  }
+
+  getPlazaRecommendation(tollId) {
+    var tollId = tollId;
+    return this.http
+      .post('http://nhai.jaitra.com:8000/getPlazaRecommendation', tollId, httpOptions)
+      .pipe(map(this.extractData), catchError(this.handleError<any>('getPlazaRecommendation')))
   }
 
   getoldgraphs(graphInputData) {
