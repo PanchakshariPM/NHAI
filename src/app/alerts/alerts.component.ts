@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DashboardService } from '../services/dashboard.service';
 
 @Component({
@@ -7,18 +7,16 @@ import { DashboardService } from '../services/dashboard.service';
   styleUrls: ['./alerts.component.css']
 })
 export class AlertsComponent implements OnInit {
-
-  public alertsData = [];
-
-  public alertsTotal: any = this.alertsData.length;
+  @Input() alertsData: any = [];
+  @Input() alertsTotal: any = 0;
 
   public response: any;
 
   constructor(public dashboardService: DashboardService) {
-    this.dashboardService.dashboardAlertResponse.subscribe((res) => {
-      this.alertsData = res.data;
-      this.alertsTotal = this.alertsData ? this.alertsData.length : [];
-    });
+    // this.dashboardService.dashboardAlertResponse.subscribe((res) => {
+    //   this.alertsData = res.data;
+    //   this.alertsTotal = this.alertsData ? this.alertsData.length : [];
+    // });
 
   }
 

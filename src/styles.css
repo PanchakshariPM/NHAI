@@ -35,19 +35,19 @@ body {
 }
 
 
-.mat-form-field-label{
+.mat-form-field-label {
   color: white !important;
 }
 
-.mat-datepicker-toggle{
+.mat-datepicker-toggle {
   color: white !important;
 }
 
-.mat-form-field-underline{
+.mat-form-field-underline {
   color: white !important;
 }
 
-.mat-select-arrow{
+.mat-select-arrow {
   color: white !important;
 }
 
@@ -55,27 +55,33 @@ body {
   color: white !important;
 } */
 
-.mat-divider{
-  border-top-color:#949494 !important;
+.mat-divider {
+  border-top-color: #949494 !important;
 }
 
-.mat-divider-horizontal{
-  color: #949494!important;
+.mat-divider-horizontal {
+  color: #949494 !important;
 }
 
-a{
+a {
   color: #8ec5fd !important;
   cursor: pointer !important;
 }
 
 .background-red {
   background-color: red;
-  }
-  
-  .background-green {
+}
+
+.background-green {
   background-color: #03c358;
-  }
-  
-  .background-amber {
+}
+
+.background-amber {
   background-color: #fb8c00;
-  }
+}
+
+span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

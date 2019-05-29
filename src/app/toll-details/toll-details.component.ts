@@ -22,6 +22,7 @@ export interface Food {
   styleUrls: ['./toll-details.component.css']
 })
 export class TollDetailsComponent implements OnInit {
+  alertsData: any = [];
 
   data: any = [Math.random() * 300]
 
@@ -396,7 +397,7 @@ export class TollDetailsComponent implements OnInit {
   public recommendationTotal: any = this.recommendationData.length;
   public response: any;
 
-  public alertsData = [];
+  // public alertsData = [];
 
   public alertsTotal: any = this.alertsData.length;
   objForDailyGraph: any = {
@@ -405,7 +406,9 @@ export class TollDetailsComponent implements OnInit {
   objForContractorInfo: any = {
     toll_plaza_id: ''
   }
-
+  objForgetNewALertPlaza: any = {
+    toll_plaza_id: ''
+  }
   constructor
     (
       public restService: RestService,
@@ -431,6 +434,7 @@ export class TollDetailsComponent implements OnInit {
         this.objForgetGraphs.toll_plaza_id = parseInt(response.toll_plaza_id);
         this.objForDailyGraph.toll_plaza_id = parseInt(response.toll_plaza_id);
         this.objForContractorInfo.toll_plaza_id = parseInt(response.toll_plaza_id);
+        this.objForgetNewALertPlaza.toll_plaza_id = parseInt(response.toll_plaza_id);
 
         this.restService.dailygraphversion2(this.objForLaneWiseGraph).subscribe(response => {
           console.log('res from dailyGraphV2:', response);
@@ -527,7 +531,11 @@ export class TollDetailsComponent implements OnInit {
 
     this.contractor_info();
 
+    this.restService.getNewALertPlaza(this.objForgetNewALertPlaza).subscribe(response => {
+      console.log('res for getNewALertPlaza:', response);
+      this.alertsData = response.data;
 
+    })
   }
 
 
@@ -538,6 +546,7 @@ export class TollDetailsComponent implements OnInit {
   contractor_info() {
     this.restService.contractor_info(this.objForContractorInfo).subscribe(response => {
       console.log('res for contractor_info:', response);
+
     })
   }
 
