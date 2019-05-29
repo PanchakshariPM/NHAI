@@ -1,0 +1,17 @@
+.widget {
+    display: block;
+    position: relative;
+    margin-bottom: 40px;
+    padding: 1rem 1.5rem;
+    color: #ffffff;
+    background: rgba(51, 51, 51, 0.425);
+    border-radius: 0.5rem;
+    }
+
+    .fontSize{
+        font-size: initial !important;
+    }
+
+    .mat-form-field-infix{
+        font-size: initial !important;
+    }

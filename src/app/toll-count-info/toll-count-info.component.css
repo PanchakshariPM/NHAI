@@ -1,0 +1,56 @@
+.green-color {
+    background-color: #40dc7e;
+}
+
+.amber-color {
+    background-color: #fb8c00;
+}
+
+.red-color {
+    background-color: #ff0000;
+}
+
+.example-card {
+    max-width: 400px;
+}
+
+.demo-chart {
+    height: 400px;
+}
+
+
+.table-hide-border {
+    border-top: none;
+}
+
+
+.table-td-border-color {
+    border-top: 1px solid #282829;
+}
+
+.widget {
+    display: block;
+    position: relative;
+    margin-bottom: 40px;
+    padding: 1rem 1rem;
+    color: #ffffff;
+    background: rgba(51, 51, 51, 0.425);
+    border-radius: 0.5rem;
+}
+
+.title {
+    font-weight: 400;
+    color: #444;
+}
+
+.progress {
+    height: 0.40rem !important;
+}
+
+.font-red {
+    color: #ff0000
+}
+
+.border-right {
+    border-right: 1px solid #ccc !important;
+}

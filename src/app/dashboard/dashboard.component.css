@@ -1,0 +1,25 @@
+.content {
+    position: relative;
+    padding: 28px 0 0 2%;
+    transition: margin-top 0.35s ease, opacity 0.2s;
+    max-width: none;
+    width: 102%;
+    opacity: 1;
+}
+
+.page-title {
+    color: #fff;
+    font-weight: 300;
+    line-height: 1;
+    margin: 11px 0 1rem;
+}
+
+.widget {
+    display: block;
+    position: relative;
+    margin-bottom: 40px;
+    padding: 1rem 1.5rem;
+    color: #ffffff;
+    background: rgba(51, 51, 51, 0.425);
+    border-radius: 0.5rem;
+}

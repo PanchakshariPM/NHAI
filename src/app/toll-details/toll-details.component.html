@@ -1,0 +1,186 @@
+<div class="row">
+  <div class="col-8 mr-auto">
+    <mat-card class="example-card widget">
+
+      <div class="row">
+        <div class="col-6">
+          <div>
+            <mat-card class="example-card widget" style="background: transparent">
+              <mat-card-header class="">
+                <span class="text-left">
+                  Towards: Bengaluru
+                </span>
+                <mat-icon class="text-right float-right ml-auto">arrow_back</mat-icon>
+              </mat-card-header>
+              <div echarts [options]="optionForInbound" class="demo-chart"></div>
+            </mat-card>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div>
+            <mat-card class="example-card widget" style="background: transparent">
+              <mat-card-header>
+                <mat-icon>arrow_forward</mat-icon>
+                <span style="margin-left:44%">
+                  Towards: Mysore
+                </span>
+              </mat-card-header>
+              <div echarts [options]="optionForOutbound" class="demo-chart"></div>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+
+
+
+  <div class="col-4">
+
+    <section class="widget" widget>
+
+      <div class="row">
+        <h5 class="col-10 mr-auto">
+          Contractor Information
+        </h5>
+      </div>
+
+      <div>
+        <div class="row">
+          <mat-card class="example-card widget m-2 w-100">
+            <mat-card-content>
+              <div>
+
+                <div class="row">
+                  <div class="col-12">
+                    <mat-card-title style="font-size: large">Larsen & Turbo</mat-card-title>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-5 ml-auto">
+                    <mat-card-subtitle style="color: white">State: Mumbai</mat-card-subtitle>
+                  </div>
+                  <div class="col-7 mr-auto">
+                    <mat-card-subtitle style="color: white">Regional Office: RO Chennai</mat-card-subtitle>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-5 ml-auto">
+                    <mat-card-subtitle style="color: white">NH-Number: NH-45</mat-card-subtitle>
+                  </div>
+                  <div class="col-7 mr-auto">
+                    <mat-card-subtitle style="color: white">Emergency Contact: +91-90812324345</mat-card-subtitle>
+                  </div>
+                </div>
+
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-8">
+    <mat-card class="example-card widget">
+      <h5 class="ml-auto">Historical Data</h5>
+      <div class="row">
+
+        <div class="col-6">
+          <mat-card class="example-card widget" style="background: transparent">
+            <mat-card-header>
+              <h6>Towards: Bengaluru</h6>
+            </mat-card-header>
+            <mat-card-content>
+              <div echarts [options]="option" class="demo-chart"></div>
+            </mat-card-content>
+
+          </mat-card>
+        </div>
+
+        <div class="col-6">
+          <mat-card class="example-card widget" style="background: transparent">
+            <mat-card-header>
+              <h6 class="text-right float-right">Towards: Mysore</h6>
+            </mat-card-header>
+            <mat-card-content>
+              <div echarts [options]="option" class="demo-chart"></div>
+            </mat-card-content>
+
+          </mat-card>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-3">
+          <mat-form-field>
+            <input matInput [matDatepicker]="fromRangePicker" placeholder="Choose a date">
+            <mat-datepicker-toggle matSuffix [for]="fromRangePicker"></mat-datepicker-toggle>
+            <mat-datepicker #fromRangePicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="col-3">
+          <mat-form-field>
+            <input matInput [matDatepicker]="toRangePicker" placeholder="Choose a date">
+            <mat-datepicker-toggle matSuffix [for]="toRangePicker"></mat-datepicker-toggle>
+            <mat-datepicker #toRangePicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="col-3">
+          <mat-form-field>
+            <mat-label>Favorite food</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let food of foods" [value]="food.value">
+                {{food.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-3 mr-auto">
+          <button mat-raised-button class="mt-2" style="background: transparent; color: white">
+            Apply Changes
+          </button>
+        </div>
+
+      </div>
+
+
+    </mat-card>
+  </div>
+
+  <div class="col-4">
+    <mat-card class="example-card widget">
+      <h5 class="ml-auto">Peek Hours</h5>
+      <mat-card class="example-card widget" style="background: transparent">
+
+        <mat-card-content>
+          <div echarts [options]="optionForPeakHourCongestion" class="demo-chart"></div>
+        </mat-card-content>
+
+      </mat-card>
+    </mat-card>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-6">
+    <app-alerts></app-alerts>
+  </div>
+  <div class="col-6">
+    <app-recommendation></app-recommendation>
+  </div>
+</div>

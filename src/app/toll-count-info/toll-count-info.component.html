@@ -1,0 +1,115 @@
+<div class="row">
+  <div class="col-12">
+    <section class="widget" style="height: 56vh">
+      <div class="row">
+        <h5 class="col-6">
+          Toll Statistics
+        </h5>
+        <h6 class="font-red col-6 text-right"><i class="fa fa-circle mr-1" style="font-size: 12px"
+            aria-hidden="true"></i>Live
+        </h6>
+      </div>
+
+      <br>
+      <div class="row">
+        <h6 class="col-12"><span style="font-weight: bold">{{statsData.total}}</span> Toll Plazas</h6>
+      </div>
+
+      <div>
+        <mat-card class="col-12 widget mb-2">
+          <mat-card-content>
+            <div class="text-center">
+              <div class="row m-0">
+                <div class="col-3 border-right">
+                  <div>Now</div>
+                  <div>{{statsData.data.high.now}}</div>
+                </div>
+                <div class="col-3 border-right">
+                  <div>Last 24 Hrs</div>
+                  <div>{{statsData.data.high.yestarday}}%</div>
+                </div>
+                <div class="col-3 border-right">
+                  <div>Last Week</div>
+                  <div>{{statsData.data.high.lastWeek}}%</div>
+                </div>
+                <div class="col-3">
+                  <div>Last Month</div>
+                  <div>{{statsData.data.high.lastMonth}}%</div>
+                </div>
+
+              </div>
+              <div class="progress mt-2">
+                <div class="progress-bar progress-sm red-color" role="progressbar"
+                  [style.width.px]="statsData.data.high.now" aria-valuenow="15" aria-valuemin="0" aria-valuemax="15">
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+        <mat-card class="col-12 widget mb-2">
+          <mat-card-content>
+            <div class="text-center">
+              <div class="row m-0">
+                <div class="col-3 border-right">
+                  <div>Now</div>
+                  <div>{{statsData.data.low.now}}</div>
+                </div>
+                <div class="col-3 border-right">
+                  <div>Last 24 Hrs</div>
+                  <div>{{statsData.data.low.yestarday}}%</div>
+                </div>
+                <div class="col-3 border-right">
+                  <div>Last Week</div>
+                  <div>{{statsData.data.low.lastWeek}}%</div>
+                </div>
+                <div class="col-3">
+                  <div>Last Month</div>
+                  <div>{{statsData.data.low.lastMonth}}%</div>
+                </div>
+              </div>
+              <div class="progress mt-2">
+                <div class="progress-bar progress-sm amber-color" role="progressbar"
+                  [style.width.px]="statsData.data.low.now" aria-valuenow="15" aria-valuemin="0" aria-valuemax="15">
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="col-12 widget mb-2">
+          <mat-card-content>
+            <div class="text-center">
+              <div class="row m-0">
+                <div class="col-3 border-right">
+                  <div>Now</div>
+                  <div>{{statsData.data.moderate.now}}</div>
+                </div>
+                <div class="col-3 border-right">
+                  <div>Last 24 Hrs</div>
+                  <div>{{statsData.data.moderate.yestarday}}%</div>
+                </div>
+                <div class="col-3 border-right">
+                  <div>Last Week</div>
+                  <div>{{statsData.data.moderate.lastWeek}}%</div>
+                </div>
+                <div class="col-3">
+                  <div>Last Month</div>
+                  <div>{{statsData.data.moderate.lastMonth}}%</div>
+                </div>
+
+              </div>
+              <div class="progress mt-2">
+                <div class="progress-bar progress-sm green-color" role="progressbar"
+                  [style.width.px]="statsData.data.moderate.now" aria-valuenow="15" aria-valuemin="0"
+                  aria-valuemax="15"></div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+
+
+      </div>
+    </section>
+  </div>
+</div>

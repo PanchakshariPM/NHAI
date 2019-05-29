@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-12">
+    <section class="widget" style="height: 56vh;">
+      <header>
+        <div class="row">
+          <div class="col-8">
+            <h5>
+              Recommendation
+              <span class="badge badge-success">{{recommendationTotal}}</span>
+            </h5>
+          </div>
+        </div>
+      </header>
+      <br>
+      <div class="showScroll">
+        <ul class="news-list px-0 mb-0" *ngFor="let item of recommendationData">
+          <li>
+            <div class="icon float-left">
+              <i class="fa fa-exclamation-triangle" style="font-size: 27px" title={{item.alert_count}}
+                [ngClass]="{'alerts-red': item.alert_count >= 3, 'alerts-green': item.alert_count < 3}"></i>
+            </div>
+            <div class="ml-4 pt-2 pr-2" style="font-size: 12px">
+              <div>
+
+                <a href="#" style="font-size: 15px">{{item.toll_plaza_name}}</a>
+                <div class="row">
+                  <span class="col-6 p-0">Towards <span title={{item.regional_office}}>{{item.direction}}</span></span>
+                  <span class="p-0 col-6">Congestion: <span *ngIf="item.congestion_level == 1"
+                      class="badge background-green" style="font-weight: 100; font-size: 11px">Low</span>
+                    <span *ngIf="item.congestion_level == 2" class="badge background-amber"
+                      style="font-weight: 100; font-size: 11px">Moderate</span>
+                    <span *ngIf="item.congestion_level == 3" class="badge background-red"
+                      style="font-weight: 100; font-size: 11px">High</span></span>
+                </div>
+                <div class="row">
+                  <span class="col-6 p-0">Since: {{item.since}}mins</span>
+                  <span class="p-0 col-6">Reg. Office: <span
+                      title={{item.regional_office}}>{{item.regional_office}}</span></span>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</div>

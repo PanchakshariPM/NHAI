@@ -1,0 +1,166 @@
+.example-card {
+    max-width: 400px;
+}
+
+.widget {
+    display: block;
+    position: relative;
+    margin-bottom: 40px;
+    padding: 1rem 1rem;
+    color: #ffffff;
+    background: rgba(51, 51, 51, 0.425);
+    border-radius: 0.5rem;
+}
+
+.title {
+    font-weight: 400;
+    color: #444;
+}
+
+li {
+    list-style-type: none !important;
+}
+
+.badge {
+    display: inline-flex !important;
+}
+
+/* SCROLL SECTION */
+.showScroll {
+    height: 47.85vh;
+    overflow-y: auto;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #989898;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #464a4f;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    border-radius: 10px;
+}
+
+
+
+/***********************************/
+/**          NEWS LIST           **/
+/**********************************/
+
+.news-list.news-list-no-hover li:hover,
+.users-list.news-list-no-hover li:hover {
+    background: none;
+    cursor: default;
+}
+
+.news-list.stretchable>li,
+.users-list.stretchable>li {
+    height: auto;
+}
+
+.news-list li,
+.users-list li {
+    border-top: 1px solid #50565c;
+    margin: 0;
+    height: 74px;
+}
+
+.news-list li:hover,
+.users-list li:hover {
+    background: #50565c;
+}
+
+.news-list li:last-child,
+.users-list li:last-child {
+    margin-bottom: 0px;
+}
+
+.news-list img,
+.users-list img,
+.news-list .icon,
+.users-list .icon {
+    float: left;
+    height: 71px;
+    width: 40px;
+}
+
+.news-list .icon,
+.users-list .icon {
+    line-height: 70px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 32px;
+}
+
+.news-list .news-item-info,
+.users-list .news-item-info {
+    margin-left: 62px;
+}
+
+.news-list .name,
+.users-list .name,
+.news-list .time,
+.users-list .time,
+.news-list .position,
+.users-list .position {
+    line-height: 16px;
+}
+
+.news-list h4.name,
+.users-list h4.name {
+    text-transform: none;
+}
+
+.news-list .name,
+.users-list .name {
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.news-list .name a,
+.users-list .name a {
+    text-decoration: none;
+}
+
+.news-list .name a:hover,
+.users-list .name a:hover {
+    color: white;
+}
+
+.news-list p,
+.users-list p {
+    margin-top: 5px;
+    font-size: 90%;
+    line-height: 1.4;
+}
+
+.news-list .time,
+.users-list .time {
+    font-size: 13px;
+    color: white;
+}
+
+.news-list .options,
+.users-list .options {
+    margin-top: 5px;
+}
+
+.news-list .comment,
+.users-list .comment {
+    font-size: 13px;
+    color: white;
+    line-height: 1.3em;
+}

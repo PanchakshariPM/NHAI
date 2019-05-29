@@ -1,0 +1,57 @@
+<div class="logo">
+</div>
+<nav sidebar id="sidebar" class="sidebar nav-collapse">
+  <ul id="side-nav" class="side-nav">
+    <li [routerLinkActive]="['active']">
+      <a routerLink="dashboard"><i class="fa fa-home"></i> <span class="name">Dashboard</span></a>
+    </li>
+
+    <li></li>
+
+    <li [routerLinkActive]="['active']">
+      <div class="ml-4" style="width:100%;">
+        <mat-divider></mat-divider>
+      </div>
+    </li>
+
+    <li></li>
+
+    <li [routerLinkActive]="['active']" style="margin-top:9% !important">
+      <a><i class="fa fa-filter" aria-hidden="true"></i>
+        <span class="name">Filter</span></a>
+      <mat-form-field class="ml-4" style="width:100%;">
+        <input matInput autocomplete="off" placeholder="Enter Value..." value="">
+      </mat-form-field>
+    </li>
+
+    <li [routerLinkActive]="['active']">
+      <div>
+        <mat-form-field class="ml-4" style="width:100%;">
+          <input matInput autocomplete="off" [matDatepicker]="picker" placeholder="Select Date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </li>
+
+    <li [routerLinkActive]="['active']">
+      <mat-form-field class="ml-4" style="width:100%;">
+        <mat-label>Select State</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let food of foods" [value]="food.value">
+            {{food.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </li>
+
+    <li>
+      <div>
+        <button type="button" class="btn btn-secondary w-100" style="margin-left: 15%;">
+          Apply
+        </button>
+      </div>
+    </li>
+  </ul>
+
+</nav>

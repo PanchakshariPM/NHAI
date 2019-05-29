@@ -1,0 +1,81 @@
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+body {
+  overflow-x: hidden;
+  color: white;
+  background: url(assets/bg-pattern.svg), -webkit-radial-gradient(10% 0, farthest-side ellipse, #414e60 20%, #94a3b1);
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+* {
+  font-family: AkzidenzGrotesk;
+  box-sizing: border-box
+}
+
+
+@font-face {
+  font-family: AkzidenzGrotesk;
+  src: url("./assets/fonts/akzidenz-grotesk-light.ttf")
+}
+
+.alerts-red {
+  color: red;
+}
+
+.alerts-green {
+  color: #03c358;
+}
+
+.alerts-amber {
+  color: #fb8c00;
+}
+
+
+.mat-form-field-label{
+  color: white !important;
+}
+
+.mat-datepicker-toggle{
+  color: white !important;
+}
+
+.mat-form-field-underline{
+  color: white !important;
+}
+
+.mat-select-arrow{
+  color: white !important;
+}
+
+/* .ng-star-inserted{
+  color: white !important;
+} */
+
+.mat-divider{
+  border-top-color:#949494 !important;
+}
+
+.mat-divider-horizontal{
+  color: #949494!important;
+}
+
+a{
+  color: #8ec5fd !important;
+  cursor: pointer !important;
+}
+
+.background-red {
+  background-color: red;
+  }
+  
+  .background-green {
+  background-color: #03c358;
+  }
+  
+  .background-amber {
+  background-color: #fb8c00;
+  }

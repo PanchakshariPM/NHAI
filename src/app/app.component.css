@@ -1,0 +1,42 @@
+.example-card {
+  max-width: 400px;
+}
+
+.demo-chart {
+  height: 400px;
+}
+
+.widget {
+  display: block;
+  position: relative;
+  margin-bottom: 40px;
+  padding: 1rem 1.5rem;
+  background: rgba(51, 51, 51, 0.4);
+  border-radius: 0.5rem;
+}
+
+.title {
+  font-weight: 400;
+  color: #444;
+}
+
+.table-hide-border {
+  border-top: none;
+}
+
+.table-color {
+  color: #ffffff !important;
+}
+
+.table-td-border-color {
+  border-top: 1px solid #282829;
+}
+
+.page-header {
+  border: none;
+  margin: 15px 2.5641% 0 0;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+  border-radius: 3px;
+}

@@ -1,0 +1,36 @@
+<div>
+  <mat-card class="widget">
+    <h5>NHAI-PMS</h5>
+    <mat-card-content style="margin-top: -40px">
+      <br>
+      <div class="mt-4" *ngIf="displayNoDataAvailable">
+        <h5>Data not available for this Toll Plaza/ID.</h5>
+      </div>
+
+      <div *ngIf="dataAvailable">
+        <div echarts [options]="updatedOption" class="demo-chart"></div>
+      </div>
+
+      <div class="widget">
+        <div>
+          <mat-form-field class="col-6 fontSize" style="width:100%;">
+            <input matInput autocomplete="off" [min]="min" [max]="max" (dateChange)="selectedPlazaName()"
+              [(ngModel)]="objForGraph.entry_date" [matDatepicker]="picker" placeholder="Select Date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field class="col-6" style="width:100%;">
+            <mat-label class="fontSize">Select Plaza</mat-label>
+            <mat-select [(value)]="selectedPlaza.toll_plaza_id">
+              <mat-option *ngFor="let data of dropDownValue" (click)="selectedPlazaName()" [value]="data.toll_plaza_id">
+                {{data.toll_plaza_name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,35 @@
+<div class="widget">
+  <div class="showScroll">
+    <table class="table table-striped table-lg mt-sm mb-0 sources-table table-color">
+      <thead>
+        <th *ngFor="let header of tableHeader" class="table-hide-border"
+          style="font-weight: 500; border-bottom: 1px solid #000000">
+          {{header}}</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of tableData; let i=index">
+          <td class="table-td-border-color">{{i+1}}</td>
+          <td class="table-td-border-color" (click)="selectedPlaza(item)"><a>{{item.toll_plaza_name}}</a></td>
+          <td class="table-td-border-color">{{item.inboundDirection}}</td>
+          <td class="table-td-border-color">{{item.inboundCongestionDistance}}
+            <div class="icon float-right">
+              <i class="fa fa-exclamation-triangle"
+                [ngClass]="{'alerts-red': item.inbond_status==3, 'alerts-amber': item.inbond_status==2, 'alerts-green': item.inbond_status==1}"></i>
+            </div>
+          </td>
+          <td class="table-td-border-color">{{item.outboundDirection}}</td>
+          <td class="table-td-border-color">{{item.outboundCongestionDistance}}
+            <div class="icon float-right">
+              <i class="fa fa-exclamation-triangle"
+                [ngClass]="{'alerts-red': item.outbond_status==3, 'alerts-amber': item.outbond_status==2,'alerts-green': item.outbond_status==1}"></i>
+            </div>
+          </td>
+          <td class="table-td-border-color">{{item.state}}</td>
+          <td class="table-td-border-color">{{item.nh_num}}</td>
+          <td class="table-td-border-color">{{item.contract_company}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
