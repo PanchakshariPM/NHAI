@@ -40,15 +40,15 @@ export class TollDetailsComponent implements OnInit {
   fromRangePicker: any;
 
   optionForInbound: any = {
-    tooltip: {
-      trigger: 'axis',
-      axisPointer: {
-        type: 'shadow',
-        crossStyle: {
-          color: '#999'
-        }
-      }
-    },
+    // tooltip: {
+    //   trigger: 'axis',
+    //   axisPointer: {
+    //     type: 'shadow',
+    //     crossStyle: {
+    //       color: '#999'
+    //     }
+    //   }
+    // },
     grid: {
       left: '3%',
       right: '4%',
@@ -99,6 +99,7 @@ export class TollDetailsComponent implements OnInit {
         },
         axisTick: { show: true },
         data: [],
+        position: 'right'
       }
     ],
     series: [
@@ -120,15 +121,15 @@ export class TollDetailsComponent implements OnInit {
 
 
   optionForOutbound: any = {
-    tooltip: {
-      trigger: 'axis',
-      axisPointer: {
-        type: 'shadow',
-        crossStyle: {
-          color: '#999'
-        }
-      }
-    },
+    // tooltip: {
+    //   trigger: 'axis',
+    //   axisPointer: {
+    //     type: 'shadow',
+    //     crossStyle: {
+    //       color: '#999'
+    //     }
+    //   }
+    // },
     grid: {
       left: '3%',
       right: '4%',
@@ -167,7 +168,7 @@ export class TollDetailsComponent implements OnInit {
         },
         axisTick: { show: true },
         data: [],
-        position: 'right'
+        position: 'left'
       }
     ],
     series: [
@@ -187,6 +188,15 @@ export class TollDetailsComponent implements OnInit {
   };
 
   optionForInboundForSimpleBarGraph = {
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow',
+        crossStyle: {
+          color: '#999'
+        }
+      }
+    },
     xAxis: {
       type: 'category',
       name: '',
@@ -209,7 +219,7 @@ export class TollDetailsComponent implements OnInit {
       max: '600',
       // name: 'Average Congestion Length in mtrs.',
       nameLocation: 'middle',
-      nameGap: '39',
+      // nameGap: '30',
       axisLine: {
         onZero: false,
         lineStyle: {
@@ -218,6 +228,7 @@ export class TollDetailsComponent implements OnInit {
       },
     },
     series: [{
+      name: 'Average Congestion Length in mtrs.',
       data: [],
       type: 'bar'
     }]
@@ -227,6 +238,15 @@ export class TollDetailsComponent implements OnInit {
   updatedOptionForOutBoundForSimpleBarGraph: any;
 
   optionForOutboundForSimpleBarGraph = {
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow',
+        crossStyle: {
+          color: '#999'
+        }
+      }
+    },
     xAxis: {
       type: 'category',
       name: '',
@@ -249,7 +269,7 @@ export class TollDetailsComponent implements OnInit {
       max: '600',
       // name: 'Average Congestion Length in mtrs.',
       nameLocation: 'middle',
-      nameGap: '30',
+      // nameGap: '30',
       axisLine: {
         onZero: false,
         lineStyle: {
@@ -258,6 +278,7 @@ export class TollDetailsComponent implements OnInit {
       },
     },
     series: [{
+      name: 'Average Congestion Length in mtrs.',
       data: [],
       type: 'bar'
     }]
@@ -554,7 +575,7 @@ export class TollDetailsComponent implements OnInit {
 
   contractor_info() {
     this.restService.contractor_info(this.objForContractorInfo).subscribe(response => {
-      console.log('res for contractor_info:', response);
+      // console.log('res for contractor_info:', response);
       this.contractorInfo = response.data;
     })
   }
@@ -600,14 +621,14 @@ export class TollDetailsComponent implements OnInit {
           response.weekly_inbound.forEach(element => {
             this.optionForInboundForSimpleBarGraph.series[0].data.push(element.graph);
             this.optionForInboundForSimpleBarGraph.xAxis.data.push(element.day);
-            this.optionForInboundForSimpleBarGraph.xAxis.name = 'Days of the week'
+            this.optionForInboundForSimpleBarGraph.xAxis.name = 'Day of week'
             this.updatedOptionForInboundBarGraph = Object.assign({}, this.optionForInboundForSimpleBarGraph);
           })
 
           response.weekly_outbound.forEach(element => {
             this.optionForOutboundForSimpleBarGraph.series[0].data.push(element.graph);
             this.optionForOutboundForSimpleBarGraph.xAxis.data.push(element.day);
-            this.optionForOutboundForSimpleBarGraph.xAxis.name = 'Days of the week'
+            this.optionForOutboundForSimpleBarGraph.xAxis.name = 'Day of week'
             this.updatedOptionForOutBoundForSimpleBarGraph = Object.assign({}, this.optionForOutboundForSimpleBarGraph);
           })
         }
@@ -617,14 +638,14 @@ export class TollDetailsComponent implements OnInit {
           response.monthly_inbound.forEach(element => {
             this.optionForInboundForSimpleBarGraph.series[0].data.push(element.graph);
             this.optionForInboundForSimpleBarGraph.xAxis.data.push(element.day);
-            this.optionForInboundForSimpleBarGraph.xAxis.name = 'Dates of the month';
+            this.optionForInboundForSimpleBarGraph.xAxis.name = 'Day of month';
             this.updatedOptionForInboundBarGraph = Object.assign({}, this.optionForInboundForSimpleBarGraph);
           })
 
           response.monthly_outbound.forEach(element => {
             this.optionForOutboundForSimpleBarGraph.series[0].data.push(element.graph);
             this.optionForOutboundForSimpleBarGraph.xAxis.data.push(element.day);
-            this.optionForOutboundForSimpleBarGraph.xAxis.name = 'Dates of the month';
+            this.optionForOutboundForSimpleBarGraph.xAxis.name = 'Day of month';
             this.updatedOptionForOutBoundForSimpleBarGraph = Object.assign({}, this.optionForOutboundForSimpleBarGraph);
           })
         }
