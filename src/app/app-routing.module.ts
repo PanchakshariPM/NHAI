@@ -22,7 +22,7 @@ const routes: Routes = [
         component: DashboardComponent
       },
       {
-        path: 'toll-details',
+        path: 'toll-details/:id',
         component: TollDetailsComponent
       }
     ]

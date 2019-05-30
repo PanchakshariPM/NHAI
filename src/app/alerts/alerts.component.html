@@ -22,7 +22,7 @@
             <div class="ml-4 pt-2 pr-2" style="font-size: 12px">
               <div>
 
-                <a href="#" style="font-size: 15px">{{item.toll_plaza_name | titlecase}}</a>
+                <a style="font-size: 15px" (click)="selectedPlaza(item)">{{item.toll_plaza_name | titlecase}}</a>
                 <div class="row">
                   <span class="col-6 p-0">Towards <span title={{item.regional_office}}>{{item.direction}}</span></span>
                   <span class="p-0 col-6">Congestion: <span *ngIf="item.congestion_level == 1"

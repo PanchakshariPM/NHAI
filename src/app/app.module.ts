@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap';
 import { HttpClientModule } from "@angular/common/http";
 import { DatePipe } from '@angular/common';
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -50,6 +51,7 @@ import { RecommendationComponent } from './recommendation/recommendation.compone
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    Ng4LoadingSpinnerModule.forRoot(),
     BsDatepickerModule.forRoot()
   ],
   providers: [DatePipe, { provide: APP_BASE_HREF, useValue: '/' }],

@@ -19,7 +19,7 @@
             <div class="d-flex">
               <img class="py-3" src="/assets/recommendations.png">
               <div class="p-2">
-                <a>{{item.toll_plaza_name | titlecase}}</a> Toll
+                <a (click)="selectedPlaza(item)">{{item.toll_plaza_name | titlecase}}</a> Toll
                 PLaza
                 towards
                 <span class="font-weight-bold">{{item.congestion_direction}}</span> is heavily congested, Lane altering

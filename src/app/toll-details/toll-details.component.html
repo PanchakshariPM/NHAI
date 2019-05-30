@@ -2,6 +2,8 @@
   <div class="col-8 mr-auto">
     <mat-card class="example-card widget" style="min-height: 86vh;">
 
+      <ng4-loading-spinner> </ng4-loading-spinner>
+
       <div class="row" *ngIf="displayNoSensorsCondition">
         <mat-card class="example-card widget ml-auto mr-auto"
           style="background: transparent; margin-top: 32% !important">
@@ -74,13 +76,21 @@
                   </div>
                 </div>
 
-
                 <div class="row">
                   <div class="col-4">
                     <mat-card-subtitle style="color: white">Plaza Name:</mat-card-subtitle>
                   </div>
                   <div class="col-8">
-                    <mat-card-subtitle style="color: white"> {{contractorInfo.Name}}</mat-card-subtitle>
+                    <mat-card-subtitle style="color: white"> {{contractorInfo?.Toll}}</mat-card-subtitle>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-4">
+                    <mat-card-subtitle style="color: white">Place:</mat-card-subtitle>
+                  </div>
+                  <div class="col-8">
+                    <mat-card-subtitle style="color: white"> {{contractorInfo?.Name}}</mat-card-subtitle>
                   </div>
                 </div>
 
@@ -89,7 +99,7 @@
                     <mat-card-subtitle style="color: white">State:</mat-card-subtitle>
                   </div>
                   <div class="col-8">
-                    <mat-card-subtitle style="color: white"> {{contractorInfo.State}}</mat-card-subtitle>
+                    <mat-card-subtitle style="color: white"> {{contractorInfo?.State}}</mat-card-subtitle>
                   </div>
                 </div>
 
@@ -116,7 +126,7 @@
                     <mat-card-subtitle style="color: white">Length:</mat-card-subtitle>
                   </div>
                   <div class="col-8">
-                    <mat-card-subtitle style="color: white"> {{contractorInfo.Length}}</mat-card-subtitle>
+                    <mat-card-subtitle style="color: white"> {{contractorInfo?.Length}}</mat-card-subtitle>
                   </div>
                 </div>
 
@@ -125,7 +135,7 @@
                     <mat-card-subtitle style="color: white">Stretch:</mat-card-subtitle>
                   </div>
                   <div class="col-8">
-                    <mat-card-subtitle style="color: white"> {{contractorInfo.Stretch}}</mat-card-subtitle>
+                    <mat-card-subtitle style="color: white"> {{contractorInfo?.Stretch}}</mat-card-subtitle>
                   </div>
                 </div>
 
@@ -195,7 +205,7 @@
                   </div>
                   <div class="col-8">
                     <mat-card-subtitle style="color: white">
-                      {{contractorInfo.contact_name}}
+                      {{contractorInfo?.contact_name}}
                     </mat-card-subtitle>
                   </div>
                 </div>
@@ -206,7 +216,7 @@
                   </div>
                   <div class="col-8">
                     <mat-card-subtitle style="color: white">
-                      {{contractorInfo.contact_number}}
+                      {{contractorInfo?.contact_number}}
                     </mat-card-subtitle>
                   </div>
                 </div>

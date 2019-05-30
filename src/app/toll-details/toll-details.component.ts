@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+
 import * as echarts from 'echarts/lib/echarts'
 import 'echarts/lib/chart/line'
 import 'echarts/lib/chart/bar'
@@ -7,6 +9,7 @@ import 'echarts/lib/component/title'
 import 'echarts/lib/component/legend'
 import { RestService } from '../services/rest.service';
 import { DashboardService } from '../services/dashboard.service';
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
 
 export interface Food {
@@ -382,12 +385,31 @@ export class TollDetailsComponent implements OnInit {
   objForgetNewALertPlaza: any = {
     toll_plaza_id: ''
   }
+
+  tollDataToBeSentToNextComp: any = {
+    toll_plaza_id: '',
+    toll_plaza_name: ''
+  }
+
+
   constructor
     (
       public restService: RestService,
-      public dashboardService: DashboardService
+      public dashboardService: DashboardService,
+      private router: Router, private activatedRoute: ActivatedRoute,
+      private spinnerService: Ng4LoadingSpinnerService
     ) {
 
+    this.activatedRoute.paramMap.subscribe((params: any) => {
+      console.log(params.get('id'));
+
+      if (params.get('id') != "" && params.get('id') != undefined && params.get('id') != null) {
+        this.tollDataToBeSentToNextComp.toll_plaza_id = params.get('id');
+        this.dashboardService.tollPlazaInfoForTable$.next(this.tollDataToBeSentToNextComp);
+      }
+    });
+
+    this.spinnerService.show();
 
     this.dashboardService.dashboardAlertResponse.subscribe((res) => {
       this.recommendationData = res.data;
@@ -401,7 +423,6 @@ export class TollDetailsComponent implements OnInit {
 
 
     this.dashboardService.tollPlazaInfoForTable.subscribe(response => {
-
       if (response != null && response != undefined) {
         this.objForLaneWiseGraph.toll_plaza_id = parseInt(response.toll_plaza_id);
         this.objForgetGraphs.toll_plaza_id = parseInt(response.toll_plaza_id);
@@ -413,6 +434,7 @@ export class TollDetailsComponent implements OnInit {
           console.log('res from dailyGraphV2:', response);
 
           if (response.data != null && response.data != undefined) {
+
 
             this.optionForInbound.series[0].data = [];
             this.updatedOptionForInbound = {};
@@ -461,12 +483,13 @@ export class TollDetailsComponent implements OnInit {
           } else if (!response.data) {
             this.displayNoSensorsCondition = true;
           }
-
+          this.spinnerService.hide();
         })
       }
     })
 
     this.restService.getgraphs(this.objForgetGraphs).subscribe(response => {
+
 
       this.optionForInboundForSimpleBarGraph.series[0].data = [];
       this.optionForInboundForSimpleBarGraph.xAxis.data = [];
