@@ -4,9 +4,16 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ViewsComponent } from './views/views.component';
 import { TollDetailsComponent } from './toll-details/toll-details.component';
 import { LoginComponent } from './login/login.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
   {
     path: 'views', component: ViewsComponent,
     children: [
@@ -25,6 +32,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }]
 })
 export class AppRoutingModule { }
