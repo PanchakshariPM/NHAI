@@ -14,8 +14,8 @@
       <br>
       <div class="showScroll">
         <ul class="news-list px-0 mb-0" style="font-size: 12px" *ngFor="let item of recommendationData">
-          <li class="pt-1"><img class="py-3"
-              src="/assets/recommendation.png"><a>{{item.toll_plaza_name | titlecase}}</a> Toll
+          <li class="pt-1"><img class="py-3" src="/assets/recommendation.png"><a
+              (click)="selectedPlaza(item)">{{item.toll_plaza_name | titlecase}}</a> Toll
             PLaza
             towards
             <span class="font-weight-bold">{{item.congestion_direction}}</span> is heavily congested, Lane altering

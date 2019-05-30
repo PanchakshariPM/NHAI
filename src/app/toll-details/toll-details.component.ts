@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+
 import * as echarts from 'echarts/lib/echarts'
 import 'echarts/lib/chart/line'
 import 'echarts/lib/chart/bar'
@@ -361,12 +363,26 @@ export class TollDetailsComponent implements OnInit {
   objForgetNewALertPlaza: any = {
     toll_plaza_id: ''
   }
+
+  tollDataToBeSentToNextComp: any = {
+    toll_plaza_id: '',
+    toll_plaza_name: ''
+  }
   constructor
     (
       public restService: RestService,
-      public dashboardService: DashboardService
+      public dashboardService: DashboardService,
+      private router: Router, private activatedRoute: ActivatedRoute
     ) {
 
+    this.activatedRoute.paramMap.subscribe((params: any) => {
+      console.log(params.get('id'));
+
+      if (params.get('id') != "" && params.get('id') != undefined && params.get('id') != null) {
+        this.tollDataToBeSentToNextComp.toll_plaza_id = params.get('id');
+        this.dashboardService.tollPlazaInfoForTable$.next(this.tollDataToBeSentToNextComp);
+      }
+    });
 
     this.dashboardService.dashboardAlertResponse.subscribe((res) => {
       this.recommendationData = res.data;

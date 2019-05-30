@@ -44,7 +44,7 @@ export class TollTableComponent implements OnInit {
       this.tollDataToBeSentToNextComp.toll_plaza_name = plazaInfo.toll_plaza_name
       this.dashboardService.tollPlazaInfoForTable$.next(this.tollDataToBeSentToNextComp);
       // console.log('data being sent:', this.tollDataToBeSentToNextComp);
-      this.router.navigate(['/views/toll-details'])
+      this.router.navigate(['/views/toll-details', plazaInfo.toll_plaza_id])
     }
   }
 
