@@ -3,7 +3,7 @@
     <mat-card class="example-card widget">
       <div class="row" *ngIf="displayNoSensorsCondition">
         <div class="col-12">
-          <h5>No Data Available For This Toll Plaza.</h5>
+          <h5>No Lane Wise Data Available For This Toll Plaza.</h5>
         </div>
       </div>
 
@@ -11,11 +11,11 @@
         <div class="col-6">
           <div>
             <mat-card class="example-card widget" style="background: transparent">
-              <mat-card-header class="">
-                <span class="text-left">
+              <mat-card-header class="text-right float-left mr-auto">
+                <!-- <span class="text-left">
                   Towards: Bengaluru
-                </span>
-                <mat-icon class="text-right float-right ml-auto">arrow_back</mat-icon>
+                </span> -->
+                <mat-icon>arrow_back</mat-icon>
               </mat-card-header>
               <div echarts [options]="updatedOptionForInbound" class="demo-chart"></div>
             </mat-card>
@@ -25,11 +25,11 @@
         <div class="col-6">
           <div>
             <mat-card class="example-card widget" style="background: transparent">
-              <mat-card-header>
+              <mat-card-header class="ml-auto float-right">
                 <mat-icon>arrow_forward</mat-icon>
-                <span style="margin-left:44%">
+                <!-- <span style="margin-left:44%">
                   Towards: Mysore
-                </span>
+                </span> -->
               </mat-card-header>
               <div echarts [options]="updatedOptionForOutBound" class="demo-chart"></div>
             </mat-card>
@@ -57,57 +57,158 @@
             <mat-card-content>
               <div>
 
-                <!-- <div class="row">
+                <div class="row">
                   <div class="col-12">
-                    <mat-card-title style="font-size: large">Larsen & Turbo</mat-card-title>
+                    <mat-card-title style="font-size:larger">
+                      Toll Plaza Information:
+                    </mat-card-title>
                   </div>
-                </div> -->
+                </div>
+
 
                 <div class="row">
+                  <div class="col-4">
+                    <mat-card-subtitle style="color: white">Plaza Name:</mat-card-subtitle>
+                  </div>
+                  <div class="col-8">
+                    <mat-card-subtitle style="color: white"> {{contractorInfo.Name}}</mat-card-subtitle>
+                  </div>
+                </div>
+
+                <div class="row">
+<<<<<<< HEAD
                   <div class="col-5 ml-auto">
                     <mat-card-subtitle style="color: white">Name: {{contractorInfo.Name}}</mat-card-subtitle>
                   </div>
                   <div class="col-7 mr-auto">
                     <mat-card-subtitle style="color: white">State: {{contractorInfo.State}}</mat-card-subtitle>
+=======
+                  <div class="col-4">
+                    <mat-card-subtitle style="color: white">State:</mat-card-subtitle>
+                  </div>
+                  <div class="col-8">
+                    <mat-card-subtitle style="color: white"> {{contractorInfo.State}}</mat-card-subtitle>
+>>>>>>> 7400f7b8f6fce245b801736269ea57d9ff2a5184
                   </div>
                 </div>
                 <!-- 
                 <div class="row">
-                  <div class="col-5 ml-auto">
-                    <mat-card-subtitle style="color: white">NH-Number: NH-45</mat-card-subtitle>
+                  <div class="col-4">
+                    <mat-card-subtitle style="color: white">NH #:</mat-card-subtitle>
                   </div>
-                  <div class="col-7 mr-auto">
-                    <mat-card-subtitle style="color: white">Emergency Contact: +91-90812324345</mat-card-subtitle>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col5 ml-auto">
-                    <mat-card-subtitle style="color: white">Administrator: NH-45</mat-card-subtitle>
-                  </div>
-                  <div class="col-7 mr-auto">
-                    <mat-card-subtitle style="color: white">Administrator Contact: +91-90812324345</mat-card-subtitle>
+                  <div class="col-8">
+                    <mat-card-subtitle style="color: white"> {{contractorInfo['National Highway']}}</mat-card-subtitle>
                   </div>
                 </div>
 
                 <div class="row">
-                  <div class="col-5">
-                    <mat-card-subtitle style="color: white">Implementation Unit: NH-45</mat-card-subtitle>
+                  <div class="col-4">
+                    <mat-card-subtitle style="color: white">Regional Office:</mat-card-subtitle>
                   </div>
-                  <div class="col-7">
-                    <mat-card-subtitle style="color: white">Stretch: +91-90812324345</mat-card-subtitle>
+                  <div class="col-8">
+                    <mat-card-subtitle style="color: white"> {{contractorInfo['Regional Office']}}</mat-card-subtitle>
                   </div>
                 </div>
 
                 <div class="row">
-                  <div class="col-5">
-                    <mat-card-subtitle style="color: white">Length: NH-45</mat-card-subtitle>
+                  <div class="col-4">
+                    <mat-card-subtitle style="color: white">Length:</mat-card-subtitle>
                   </div>
-                  <div class="col-7">
-                    <mat-card-subtitle style="color: white">Concessionaire: +91-90812324345</mat-card-subtitle>
+                  <div class="col-8">
+                    <mat-card-subtitle style="color: white"> {{contractorInfo.Length}}</mat-card-subtitle>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-4">
+                    <mat-card-subtitle style="color: white">Stretch:</mat-card-subtitle>
+                  </div>
+                  <div class="col-8">
+                    <mat-card-subtitle style="color: white"> {{contractorInfo.Stretch}}</mat-card-subtitle>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-4">
+                    <mat-card-subtitle style="color: white">Concessionaire:</mat-card-subtitle>
+                  </div>
+                  <div class="col-8">
+                    <mat-card-subtitle style="color: white"> {{contractorInfo['Name of Concessionaire']}}
+                    </mat-card-subtitle>
+                  </div>
+                </div>
+
+                <mat-divider></mat-divider>
+
+                <div class="row mt-2">
+                  <div class="col-1">
+                    <mat-icon>alternate_email</mat-icon>
+                  </div>
+                  <div class="col-7 mr-auto text-left">
+                    <mat-card-title class="text-left float-left" style="font-size:larger">
+                      Administrator Information:
+                    </mat-card-title>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-4">
+                    <mat-card-subtitle style="color: white">Project Director:</mat-card-subtitle>
+                  </div>
+                  <div class="col-8">
+                    <mat-card-subtitle style="color: white">
+                      {{contractorInfo['Highway Administrator ~ Project Director']}}</mat-card-subtitle>
                   </div>
                 </div> -->
 
+                <div class="row">
+                  <div class="col-4">
+                    <mat-card-subtitle style="color: white">Contact Number:</mat-card-subtitle>
+                  </div>
+                  <div class="col-8">
+                    <mat-card-subtitle style="color: white">
+                      {{contractorInfo['Highway Administrator Contact number 1']}}/{{contractorInfo['Highway Administrator Contact number 2']}}
+                    </mat-card-subtitle>
+                  </div>
+                </div>
+
+                <mat-divider></mat-divider>
+
+
+
+                <div class="row mt-2">
+                  <div class="col-1">
+                    <mat-icon>account_circle</mat-icon>
+                  </div>
+                  <div class="col-7 mr-auto text-left">
+                    <mat-card-title class="text-left float-left" style="font-size:larger">
+                      Point of Contact:
+                    </mat-card-title>
+                  </div>
+                </div>
+
+
+                <div class="row">
+                  <div class="col-4">
+                    <mat-card-subtitle style="color: white">Name:</mat-card-subtitle>
+                  </div>
+                  <div class="col-8">
+                    <mat-card-subtitle style="color: white">
+                      {{contractorInfo.contact_name}}
+                    </mat-card-subtitle>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-4">
+                    <mat-card-subtitle style="color: white">Contact Number:</mat-card-subtitle>
+                  </div>
+                  <div class="col-8">
+                    <mat-card-subtitle style="color: white">
+                      {{contractorInfo.contact_number}}
+                    </mat-card-subtitle>
+                  </div>
+                </div>
 
               </div>
             </mat-card-content>
@@ -130,9 +231,9 @@
 
         <div class="col-6">
           <mat-card class="example-card widget" style="background: transparent">
-            <mat-card-header>
+            <!-- <mat-card-header>
               <h6>Towards: Bengaluru</h6>
-            </mat-card-header>
+            </mat-card-header> -->
             <mat-card-content>
               <div echarts [options]="updatedOptionForInboundBarGraph" class="demo-chart"></div>
             </mat-card-content>
@@ -142,9 +243,9 @@
 
         <div class="col-6">
           <mat-card class="example-card widget" style="background: transparent">
-            <mat-card-header>
+            <!-- <mat-card-header>
               <h6 class="text-right float-right">Towards: Mysore</h6>
-            </mat-card-header>
+            </mat-card-header> -->
             <mat-card-content>
               <div echarts [options]="updatedOptionForOutBoundForSimpleBarGraph" class="demo-chart"></div>
             </mat-card-content>
@@ -158,8 +259,7 @@
 
         <div class="col-5 ml-2">
           <mat-form-field>
-            <input matInput [matDatepicker]="fromRangePicker" [(ngModel)]="objForgetGraphs.date"
-              placeholder="Choose a date">
+            <input matInput [matDatepicker]="fromRangePicker" [(ngModel)]="objForgetGraphs.date" placeholder="Today">
             <mat-datepicker-toggle matSuffix [for]="fromRangePicker"></mat-datepicker-toggle>
             <mat-datepicker #fromRangePicker></mat-datepicker>
           </mat-form-field>
@@ -167,7 +267,7 @@
 
         <div class="col-5">
           <mat-form-field>
-            <mat-label>Filter Type</mat-label>
+            <mat-label>Day</mat-label>
             <mat-select>
               <mat-option *ngFor="let filter of filters" (click)="selectedParameter(filter.value)"
                 [value]="filter.value">
@@ -202,6 +302,7 @@
     <app-alerts [alertsData]="alertsData" [alertsTotal]="alertsData.length"></app-alerts>
   </div>
   <div class="col-6">
-    <app-recommendation></app-recommendation>
+    <app-recommendation [recommendationData]="recommendationData" [recommendationTotal]="recommendationData.length">
+    </app-recommendation>
   </div>
 </div>

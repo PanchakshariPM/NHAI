@@ -186,6 +186,8 @@ export class TollDetailsComponent implements OnInit {
     xAxis: {
       type: 'category',
       name: '',
+      nameLocation: 'middle',
+      nameGap: '30',
       axisLine: {
         onZero: false,
         lineStyle: {
@@ -199,6 +201,9 @@ export class TollDetailsComponent implements OnInit {
     },
     yAxis: {
       type: 'value',
+      name: 'Average Congestion Length in mtrs.',
+      nameLocation: 'middle',
+      nameGap: '39',
       axisLine: {
         onZero: false,
         lineStyle: {
@@ -207,36 +212,7 @@ export class TollDetailsComponent implements OnInit {
       },
     },
     series: [{
-      data: [
-        // {
-        //   value: 200,
-        //   itemStyle: { color: '#ff0000' },
-        // },
-        // {
-        //   value: 100,
-        //   itemStyle: { color: '#fa7b79' },
-        // },
-        // {
-        //   value: 500,
-        //   itemStyle: { color: '#40dc7e' },
-        // },
-        // {
-        //   value: 200,
-        //   itemStyle: { color: '#ff0000' },
-        // },
-        // {
-        //   value: 100,
-        //   itemStyle: { color: '#fa7b79' },
-        // },
-        // {
-        //   value: 200,
-        //   itemStyle: { color: '#ff0000' },
-        // },
-        // {
-        //   value: 100,
-        //   itemStyle: { color: '#fa7b79' },
-        // }
-      ],
+      data: [],
       type: 'bar'
     }]
   };
@@ -248,6 +224,8 @@ export class TollDetailsComponent implements OnInit {
     xAxis: {
       type: 'category',
       name: '',
+      nameLocation: 'middle',
+      nameGap: '30',
       axisLine: {
         onZero: false,
         lineStyle: {
@@ -261,6 +239,9 @@ export class TollDetailsComponent implements OnInit {
     },
     yAxis: {
       type: 'value',
+      name: 'Average Congestion Length in mtrs.',
+      nameLocation: 'middle',
+      nameGap: '30',
       axisLine: {
         onZero: false,
         lineStyle: {
@@ -269,36 +250,7 @@ export class TollDetailsComponent implements OnInit {
       },
     },
     series: [{
-      data: [
-        // {
-        //   value: 200,
-        //   itemStyle: { color: '#ff0000' },
-        // },
-        // {
-        //   value: 100,
-        //   itemStyle: { color: '#fa7b79' },
-        // },
-        // {
-        //   value: 500,
-        //   itemStyle: { color: '#40dc7e' },
-        // },
-        // {
-        //   value: 200,
-        //   itemStyle: { color: '#ff0000' },
-        // },
-        // {
-        //   value: 100,
-        //   itemStyle: { color: '#fa7b79' },
-        // },
-        // {
-        //   value: 200,
-        //   itemStyle: { color: '#ff0000' },
-        // },
-        // {
-        //   value: 100,
-        //   itemStyle: { color: '#fa7b79' },
-        // }
-      ],
+      data: [],
       type: 'bar'
     }]
   };
@@ -520,7 +472,7 @@ export class TollDetailsComponent implements OnInit {
 
 
     this.restService.dailygraph(this.objForDailyGraph).subscribe(response => {
-      console.log('res from dailygraph:', response);
+      // console.log('res from dailygraph:', response);
       response.inbound.forEach(element => {
         this.optionForPeakHourCongestion.series[0].data.push(element.graph);
         this.optionForPeakHourCongestion.xAxis[0].data.push(element.hour);
@@ -532,9 +484,11 @@ export class TollDetailsComponent implements OnInit {
     this.contractor_info();
 
     this.restService.getNewALertPlaza(this.objForgetNewALertPlaza).subscribe(response => {
-      console.log('res for getNewALertPlaza:', response);
       this.alertsData = response.data;
+    })
 
+    this.restService.getPlazaRecommendation(this.objForgetNewALertPlaza).subscribe(response => {
+      this.recommendationData = response.data;
     })
   }
 
