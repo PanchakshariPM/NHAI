@@ -25,9 +25,22 @@ li {
     display: inline-flex !important;
 }
 
+.dashboardHeight {
+    height: 64vh !important;
+}
+
+.detailsHeight {
+    height: 40vh !important;
+}
+
 /* SCROLL SECTION */
-.showScroll {
+.showScroll-Dashboard {
     height: 47vh;
+    overflow-y: auto;
+}
+
+.showScroll-Details {
+    height: 28vh;
     overflow-y: auto;
 }
 
