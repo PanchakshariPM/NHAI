@@ -85,7 +85,8 @@ export class DashboardService {
         return this.http.post<any>(url, {}, this.httpOptions)
             .pipe(
                 map((response: any) => {
-                    this.dashboardRecommendationResponse$.next(response);
+                    // this.dashboardRecommendationResponse$.next(response);
+                    return response;
                 }),
             );
     }

@@ -240,7 +240,7 @@ export class TollDetailsComponent implements OnInit {
       type: 'bar'
     }]
   };
-
+  contractorInfo: any;
   updatedOptionForInboundBarGraph: any;
   updatedOptionForOutBoundForSimpleBarGraph: any;
 
@@ -546,7 +546,7 @@ export class TollDetailsComponent implements OnInit {
   contractor_info() {
     this.restService.contractor_info(this.objForContractorInfo).subscribe(response => {
       console.log('res for contractor_info:', response);
-
+      this.contractorInfo = response.data;
     })
   }
 

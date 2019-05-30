@@ -10,7 +10,7 @@ import { DashboardService } from '../services/dashboard.service';
 export class DashboardComponent implements OnInit {
 
   alertsData: any = [];
-
+  recommendationData: any = [];
   constructor(public dashboardService: DashboardService) { }
 
   ngOnInit() {
@@ -26,7 +26,6 @@ export class DashboardComponent implements OnInit {
 
   getAlerts() {
     this.dashboardService.getAlerts().subscribe((res: any) => {
-      console.log(res);
       if (res && res.data != null)
         this.alertsData = res.data;
     });
@@ -34,12 +33,15 @@ export class DashboardComponent implements OnInit {
 
   getRecommendation() {
     this.dashboardService.getRecommendation().subscribe((res: any) => {
+      if (res && res.data != null)
+        this.recommendationData = res.data;
 
     });
   }
 
   getTableData() {
     this.dashboardService.getTollTableData().subscribe((res: any) => {
+
 
     });
   }

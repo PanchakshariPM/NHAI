@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule, APP_BASE_HREF } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppMaterialModule } from './app.material.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -40,6 +41,7 @@ import { RecommendationComponent } from './recommendation/recommendation.compone
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     BrowserAnimationsModule,
     AppMaterialModule,
     AppRoutingModule,
@@ -50,7 +52,7 @@ import { RecommendationComponent } from './recommendation/recommendation.compone
     HttpClientModule,
     BsDatepickerModule.forRoot()
   ],
-  providers: [DatePipe],
+  providers: [DatePipe, { provide: APP_BASE_HREF, useValue: '/' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
