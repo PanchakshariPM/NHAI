@@ -3,13 +3,14 @@
 <nav sidebar id="sidebar" class="sidebar nav-collapse">
   <ul id="side-nav" class="side-nav">
     <li [routerLinkActive]="['active']">
-      <a routerLink="dashboard"><i class="fa fa-home"></i> <span class="name">Dashboard</span></a>
+      <div class="ml-4" routerLink="dashboard"><i class="fa fa-home"></i>
+        <span class="name">Dashboard</span></div>
     </li>
 
     <li></li>
 
     <li [routerLinkActive]="['active']">
-      <div class="ml-4" style="width:100%;">
+      <div class="ml-4 mt-3" style="width:100%;">
         <mat-divider></mat-divider>
       </div>
     </li>
@@ -17,8 +18,8 @@
     <li></li>
 
     <li [routerLinkActive]="['active']" style="margin-top:9% !important">
-      <a><i class="fa fa-filter" aria-hidden="true"></i>
-        <span class="name">Filter</span></a>
+      <div class="ml-4"><i class="fa fa-filter" aria-hidden="true"></i>
+        <span class="name">Filter</span></div>
       <mat-form-field class="ml-4" style="width:100%;">
         <input matInput autocomplete="off" placeholder="Enter Value..." value="">
       </mat-form-field>
