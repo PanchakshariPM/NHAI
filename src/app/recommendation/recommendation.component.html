@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-12">
-    <section class="widget" style="height: 64vh;">
+    <section class="widget" [ngClass]="{'dashboardHeight': isDashboard, 'detailsHeight': !isDashboard}">
       <header>
         <div class="row">
           <div class="col-10">
@@ -12,7 +12,7 @@
         </div>
       </header>
       <br>
-      <div class="showScroll">
+      <div [ngClass]="{'showScroll-Dashboard': isDashboard, 'showScroll-Details': !isDashboard}">
         <ul class="news-list px-0 mb-0" style="font-size: 12px" *ngFor="let item of recommendationData">
           <li class="pt-1">
             <!-- <img class="py-3"src="/assets/recommendation.png"> -->

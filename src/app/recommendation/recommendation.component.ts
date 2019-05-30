@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DashboardService } from '../services/dashboard.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
 @Component({
@@ -22,9 +22,17 @@ export class RecommendationComponent implements OnInit {
     toll_plaza_name: ''
   }
 
-  constructor(public dashboardService: DashboardService, private router: Router,
-    private spinnerService: Ng4LoadingSpinnerService
-  ) {
+  public isDashboard: any;
+
+  constructor(public dashboardService: DashboardService, private router: Router, private activatedRoute: ActivatedRoute,
+    private spinnerService: Ng4LoadingSpinnerService) {
+    this.activatedRoute.paramMap.subscribe((params: any) => {
+      if (params.get('id') != '' && params.get('id') != undefined && params.get('id') != null) {
+        this.isDashboard = false;
+      } else {
+        this.isDashboard = true;
+      }
+    });
   }
 
   ngOnInit() {
