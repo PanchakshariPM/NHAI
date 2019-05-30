@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-12">
-    <section class="widget" style="height: 56vh">
+    <section class="widget" style="height: 64vh; overflow-x: hidden; overflow-y: auto">
       <div class="row">
         <h5 class="col-6">
           Toll Statistics
@@ -20,27 +20,27 @@
           <mat-card-content>
             <div class="text-center">
               <div class="row m-0">
-                <div class="col-3 border-right">
+                <div class="col-3 p-0 border-right">
                   <div>Now</div>
                   <div>{{statsData.data.high.now}}</div>
                 </div>
-                <div class="col-3 border-right">
+                <div class="col-3 p-0 border-right">
                   <div>Last 24 Hrs</div>
                   <div>{{statsData.data.high.yestarday}}%</div>
                 </div>
-                <div class="col-3 border-right">
+                <div class="col-3 p-0 border-right">
                   <div>Last Week</div>
                   <div>{{statsData.data.high.lastWeek}}%</div>
                 </div>
-                <div class="col-3">
+                <div class="col-3 p-0">
                   <div>Last Month</div>
                   <div>{{statsData.data.high.lastMonth}}%</div>
                 </div>
 
               </div>
               <div class="progress mt-2">
-                <div class="progress-bar progress-sm red-color" role="progressbar"
-                  [style.width.px]="statsData.data.high.now" aria-valuenow="15" aria-valuemin="0" aria-valuemax="15">
+                <div class="progress-bar progress-sm red-color" role="progressbar" [style.width.%]="highProgessBarWidth"
+                  aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
                 </div>
               </div>
             </div>
@@ -50,26 +50,26 @@
           <mat-card-content>
             <div class="text-center">
               <div class="row m-0">
-                <div class="col-3 border-right">
+                <div class="col-3 p-0 border-right">
                   <div>Now</div>
                   <div>{{statsData.data.low.now}}</div>
                 </div>
-                <div class="col-3 border-right">
+                <div class="col-3 p-0 border-right">
                   <div>Last 24 Hrs</div>
                   <div>{{statsData.data.low.yestarday}}%</div>
                 </div>
-                <div class="col-3 border-right">
+                <div class="col-3 p-0 border-right">
                   <div>Last Week</div>
                   <div>{{statsData.data.low.lastWeek}}%</div>
                 </div>
-                <div class="col-3">
+                <div class="col-3 p-0">
                   <div>Last Month</div>
                   <div>{{statsData.data.low.lastMonth}}%</div>
                 </div>
               </div>
               <div class="progress mt-2">
                 <div class="progress-bar progress-sm amber-color" role="progressbar"
-                  [style.width.px]="statsData.data.low.now" aria-valuenow="15" aria-valuemin="0" aria-valuemax="15">
+                  [style.width.%]="lowProgessBarWidth" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
                 </div>
               </div>
             </div>
@@ -80,19 +80,19 @@
           <mat-card-content>
             <div class="text-center">
               <div class="row m-0">
-                <div class="col-3 border-right">
+                <div class="col-3 p-0 border-right">
                   <div>Now</div>
                   <div>{{statsData.data.moderate.now}}</div>
                 </div>
-                <div class="col-3 border-right">
+                <div class="col-3 p-0 border-right">
                   <div>Last 24 Hrs</div>
                   <div>{{statsData.data.moderate.yestarday}}%</div>
                 </div>
-                <div class="col-3 border-right">
+                <div class="col-3 p-0 border-right">
                   <div>Last Week</div>
                   <div>{{statsData.data.moderate.lastWeek}}%</div>
                 </div>
-                <div class="col-3">
+                <div class="col-3 p-0">
                   <div>Last Month</div>
                   <div>{{statsData.data.moderate.lastMonth}}%</div>
                 </div>
@@ -100,8 +100,8 @@
               </div>
               <div class="progress mt-2">
                 <div class="progress-bar progress-sm green-color" role="progressbar"
-                  [style.width.px]="statsData.data.moderate.now" aria-valuenow="15" aria-valuemin="0"
-                  aria-valuemax="15"></div>
+                  [style.width.%]="moderateProgessBarWidth" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                </div>
               </div>
             </div>
           </mat-card-content>

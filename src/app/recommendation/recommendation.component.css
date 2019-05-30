@@ -27,7 +27,7 @@ li {
 
 /* SCROLL SECTION */
 .showScroll {
-    height: 42vh;
+    height: 47vh;
     overflow-y: auto;
 }
 
@@ -75,7 +75,6 @@ li {
 .users-list li {
     border-top: 1px solid #50565c;
     margin: 0;
-    height: 74px;
 }
 
 .news-list li:hover,
