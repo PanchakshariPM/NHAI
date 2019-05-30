@@ -1,13 +1,17 @@
 <div class="row">
   <div class="col-8 mr-auto">
-    <mat-card class="example-card widget">
+    <mat-card class="example-card widget" style="min-height: 86vh;">
+
       <div class="row" *ngIf="displayNoSensorsCondition">
-        <div class="col-12">
-          <h5>No Lane Wise Data Available For This Toll Plaza.</h5>
-        </div>
+        <mat-card class="example-card widget ml-auto mr-auto"
+          style="background: transparent; margin-top: 32% !important">
+          <div class="col-12">
+            <h5>No Lane Wise Data Available For This Toll Plaza.</h5>
+          </div>
+        </mat-card>
       </div>
 
-      <div class="row" *ngIf="displayNoSensorsCondition==false">
+      <div class="row" style="margin-top: 13% !important" *ngIf="displayNoSensorsCondition==false">
         <div class="col-6">
           <div>
             <mat-card class="example-card widget" style="background: transparent">
@@ -24,6 +28,11 @@
 
         <div class="col-6">
           <div>
+            <div class="row" *ngIf="displayNoSensorsCondition">
+              <div class="col-12">
+                <h5>No Lane Wise Data Available For This Toll Plaza.</h5>
+              </div>
+            </div>
             <mat-card class="example-card widget" style="background: transparent">
               <mat-card-header class="ml-auto float-right">
                 <mat-icon>arrow_forward</mat-icon>
@@ -251,7 +260,8 @@
 
         <div class="col-5 ml-2">
           <mat-form-field>
-            <input matInput [matDatepicker]="fromRangePicker" [(ngModel)]="objForgetGraphs.date" placeholder="Today">
+            <input matInput [matDatepicker]="fromRangePicker" (dateChange)="selectedParameter()"
+              [(ngModel)]="objForgetGraphs.date" placeholder="Select Date">
             <mat-datepicker-toggle matSuffix [for]="fromRangePicker"></mat-datepicker-toggle>
             <mat-datepicker #fromRangePicker></mat-datepicker>
           </mat-form-field>
@@ -259,10 +269,9 @@
 
         <div class="col-5">
           <mat-form-field>
-            <mat-label>Day</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let filter of filters" (click)="selectedParameter(filter.value)"
-                [value]="filter.value">
+            <mat-label>Filter Type</mat-label>
+            <mat-select [(value)]="selectedFilter.value">
+              <mat-option *ngFor="let filter of filters" (click)="selectedParameter()" [value]="filter.value">
                 {{filter.viewValue}}
               </mat-option>
             </mat-select>
@@ -291,10 +300,10 @@
 
 <div class="row">
   <div class="col-6">
-    <app-alerts [alertsData]="alertsData" [alertsTotal]="alertsData.length"></app-alerts>
+    <app-alerts class="setHeight" [alertsData]="alertsData" [alertsTotal]="alertsData?.length"></app-alerts>
   </div>
   <div class="col-6">
-    <app-recommendation [recommendationData]="recommendationData" [recommendationTotal]="recommendationData.length">
+    <app-recommendation [recommendationData]="recommendationData" [recommendationTotal]="recommendationData?.length">
     </app-recommendation>
   </div>
 </div>

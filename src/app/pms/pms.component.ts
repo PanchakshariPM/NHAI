@@ -79,7 +79,7 @@ export class PmsComponent implements OnInit {
   selectedPlaza: any = {
     toll_plaza_id: 10007,
     toll_plaza_name: "Vantada"
-  }
+  };
   dropDownValue: any = [];
   min = new Date('12/02/2018');
   max = new Date();

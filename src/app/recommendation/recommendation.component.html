@@ -14,15 +14,25 @@
       <br>
       <div class="showScroll">
         <ul class="news-list px-0 mb-0" style="font-size: 12px" *ngFor="let item of recommendationData">
-          <li class="pt-1"><img class="py-3"
-              src="/assets/recommendation.png"><a>{{item.toll_plaza_name | titlecase}}</a> Toll
-            PLaza
-            towards
-            <span class="font-weight-bold">{{item.congestion_direction}}</span> is heavily congested, Lane altering
-            recommended as
-            traffic towards
-            <span class="font-weight-bold">{{item.recommendation_direction}}</span> is light</li>
-          <div style="font-size: 10px; text-align: right">{{item.recommended_time | date: 'MM/dd/yy, h:mm a'}}</div>
+          <li class="pt-1">
+            <!-- <img class="py-3"src="/assets/recommendation.png"> -->
+            <div class="d-flex">
+              <img class="py-3" src="/assets/recommendations.png">
+              <div class="p-2">
+                <a>{{item.toll_plaza_name | titlecase}}</a> Toll
+                PLaza
+                towards
+                <span class="font-weight-bold">{{item.congestion_direction}}</span> is heavily congested, Lane altering
+                recommended as
+                traffic towards
+                <span class="font-weight-bold">{{item.recommendation_direction}}</span> is light</div>
+            </div>
+            <div style="font-size: 10px; text-align: right">{{item.recommended_time | date: 'MM/dd/yy, h:mm a'}}</div>
+          </li>
+
+
+
+
         </ul>
       </div>
     </section>

@@ -82,13 +82,7 @@ li {
     background: #50565c;
 }
 
-.news-list li:last-child,
-.users-list li:last-child {
-    margin-bottom: 0px;
-}
 
-.news-list img,
-.users-list img,
 .news-list .icon,
 .users-list .icon {
     float: left;
