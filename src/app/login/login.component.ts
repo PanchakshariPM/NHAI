@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.restService.login(this.loginRequest).subscribe(response => {
-      console.log('res of login:', response);
+      // console.log('res of login:', response);
       if (response.statusCode === 200) {
         this.router.navigate(['/views/dashboard'])
       }

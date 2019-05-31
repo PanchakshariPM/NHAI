@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { RestService } from '../services/rest.service';
 import { LineToLineMappedSource } from 'webpack-sources';
 import { DatePipe } from '@angular/common';
+import { ViewEncapsulation } from '@angular/core';
+
 
 @Component({
   selector: 'app-pms',
   templateUrl: './pms.component.html',
-  styleUrls: ['./pms.component.css']
+  styleUrls: ['./pms.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class PmsComponent implements OnInit {
 
@@ -94,7 +97,7 @@ export class PmsComponent implements OnInit {
 
     this.restService.getnhaitcm().subscribe(response => {
       if (response.data != null && response.data != undefined) {
-        console.log('res of getnhaitcm:', response.data);
+        // console.log('res of getnhaitcm:', response.data);
         this.dropDownValue = response.data
 
       }
@@ -125,7 +128,7 @@ export class PmsComponent implements OnInit {
         this.displayNoDataAvailable = false
         this.dataAvailable = true;
       }
-      console.log('res from nhai_api_new:', response);
+      // console.log('res from nhai_api_new:', response);
       //this.chartOption.series = response.data;
 
       if (response.hasOwnProperty('data')) {
@@ -146,7 +149,7 @@ export class PmsComponent implements OnInit {
 
   selectedPlazaName() {
     this.objForGraph.entry_date = this.datePipe.transform(this.objForGraph.entry_date, "yyyy-MM-dd");
-    console.log(this.objForGraph.entry_date);
+    // console.log(this.objForGraph.entry_date);
 
     if (this.objForGraph.entry_date && this.selectedPlaza.toll_plaza_id) {
       // this.objForGraph.entry_date

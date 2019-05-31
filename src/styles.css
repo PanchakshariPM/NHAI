@@ -85,3 +85,8 @@ span {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.mat-select-content{
+  /* width:2000px; */
+  background-color: red !important;
+  /* font-size: 10px;    */
+}

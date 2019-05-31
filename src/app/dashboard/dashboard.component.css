@@ -23,3 +23,9 @@
     background: rgba(51, 51, 51, 0.425);
     border-radius: 0.5rem;
 }
+
+.mat-select-content{
+    /* width:2000px; */
+    background-color: red !important;
+    /* font-size: 10px; */
+}

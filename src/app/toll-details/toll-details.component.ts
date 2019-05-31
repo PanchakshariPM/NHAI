@@ -217,9 +217,9 @@ export class TollDetailsComponent implements OnInit {
       type: 'value',
       min: '0',
       max: '600',
-      // name: 'Average Congestion Length in mtrs.',
-      nameLocation: 'middle',
-      // nameGap: '30',
+      name: 'Meters',
+      nameLocation: 'end',
+      nameGap: '13',
       axisLine: {
         onZero: false,
         lineStyle: {
@@ -267,8 +267,8 @@ export class TollDetailsComponent implements OnInit {
       type: 'value',
       min: '0',
       max: '600',
-      // name: 'Average Congestion Length in mtrs.',
-      nameLocation: 'middle',
+      name: 'Meters',
+      nameLocation: 'end',
       // nameGap: '30',
       axisLine: {
         onZero: false,
@@ -285,14 +285,47 @@ export class TollDetailsComponent implements OnInit {
   };
 
 
+
+
   optionForPeakHourCongestion = {
+    color: ['#FF0000', '#FF2D700'],
     title: {
       text: '',
       subtext: ''
     },
     tooltip: {
-      trigger: 'axis'
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow',
+        crossStyle: {
+          color: '#999'
+        }
+      }
     },
+    // tooltip: {
+    //   trigger: 'axis'
+    // },
+    legend: {
+      show: true,
+      padding: 1,
+      textStyle: {
+        color: 'white'
+      },
+      // activeColor: 'white',
+      // itemGap: '12',
+      // margin: 10,
+      data: ['Inbound Congestion', 'Outbound Congestion']
+    },
+    // toolbox: {
+    //   show: true,
+    //   feature: {
+    //     mark: { show: true },
+    //     dataView: { show: true, readOnly: false },
+    //     magicType: { show: true, type: ['line', 'bar'] },
+    //     restore: { show: true },
+    //     saveAsImage: { show: true }
+    //   }
+    // },
     calculable: true,
     xAxis: [
       {
@@ -422,7 +455,7 @@ export class TollDetailsComponent implements OnInit {
     ) {
 
     this.activatedRoute.paramMap.subscribe((params: any) => {
-      console.log(params.get('id'));
+      // console.log(params.get('id'));
 
       if (params.get('id') != "" && params.get('id') != undefined && params.get('id') != null) {
         this.tollDataToBeSentToNextComp.toll_plaza_id = params.get('id');
@@ -452,7 +485,7 @@ export class TollDetailsComponent implements OnInit {
         this.objForgetNewALertPlaza.toll_plaza_id = parseInt(response.toll_plaza_id);
 
         this.restService.dailygraphversion2(this.objForLaneWiseGraph).subscribe(response => {
-          console.log('res from dailyGraphV2:', response);
+          // console.log('res from dailyGraphV2:', response);
 
           if (response.data != null && response.data != undefined) {
 
@@ -588,7 +621,7 @@ export class TollDetailsComponent implements OnInit {
     if (this.objForgetGraphs.date && this.selectedFilter.value) {
 
       this.restService.getgraphs(this.objForgetGraphs).subscribe(response => {
-        console.log('res for getgraphsAPI:', response);
+        // console.log('res for getgraphsAPI:', response);
 
         this.optionForInboundForSimpleBarGraph.series[0].data = [];
         this.optionForInboundForSimpleBarGraph.xAxis.data = [];
