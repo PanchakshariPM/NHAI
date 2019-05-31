@@ -51,6 +51,24 @@ body {
   color: white !important;
 }
 
+.mat-select-value {
+  color: white;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: white !important
+}
+
+.mat-option {
+  color: black;
+}
+
+.mat-option :hover {
+  color: darkgray;
+}
+
+
+
 /* .ng-star-inserted{
   color: white !important;
 } */
