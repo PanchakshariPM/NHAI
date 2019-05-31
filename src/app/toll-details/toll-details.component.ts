@@ -445,6 +445,9 @@ export class TollDetailsComponent implements OnInit {
     toll_plaza_name: ''
   }
 
+  minDateRange = new Date('05/21/2019');
+  maxDateRange = new Date();
+
 
   constructor
     (

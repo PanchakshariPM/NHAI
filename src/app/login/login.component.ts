@@ -9,8 +9,13 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  // loginRequest: any = {
+  //   name: '',
+  //   password: ''
+  // }
+
   loginRequest: any = {
-    name: '',
+    user_id: '',
     password: ''
   }
 

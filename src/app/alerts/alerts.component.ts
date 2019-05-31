@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DashboardService } from '../services/dashboard.service';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-alerts',
@@ -21,8 +22,10 @@ export class AlertsComponent implements OnInit {
 
   public isDashboard: any;
 
-  constructor(public dashboardService: DashboardService, private router: Router, private activatedRoute: ActivatedRoute,
-    private spinnerService: Ng4LoadingSpinnerService
+  constructor(
+    public dashboardService: DashboardService, private router: Router, private activatedRoute: ActivatedRoute,
+    private spinnerService: Ng4LoadingSpinnerService,
+    private toastr: ToastrService
   ) {
     this.activatedRoute.paramMap.subscribe((params: any) => {
       if (params.get('id') != '' && params.get('id') != undefined && params.get('id') != null) {
@@ -35,6 +38,12 @@ export class AlertsComponent implements OnInit {
 
   ngOnInit() {
     this.spinnerService.show();
+  }
+
+
+  // Toaster for notication
+  showSuccess() {
+    this.toastr.error('Toll Has reached 100 counts!', 'Alert!');
   }
 
   selectedPlaza(plazaInfo) {

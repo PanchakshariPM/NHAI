@@ -272,8 +272,8 @@
 
         <div class="col-5 ml-2">
           <mat-form-field>
-            <input matInput [matDatepicker]="fromRangePicker" (dateChange)="selectedParameter()"
-              [(ngModel)]="objForgetGraphs.date" placeholder="Select Date">
+            <input matInput [matDatepicker]="fromRangePicker" [min]="minDateRange" [max]="maxDateRange"
+              (dateChange)="selectedParameter()" [(ngModel)]="objForgetGraphs.date" placeholder="Select Date">
             <mat-datepicker-toggle matSuffix [for]="fromRangePicker"></mat-datepicker-toggle>
             <mat-datepicker #fromRangePicker></mat-datepicker>
           </mat-form-field>

@@ -30,7 +30,7 @@ export class RestService {
   login(loginRequest) {
     var loginReq = loginRequest;
     return this.http
-      .post(endpointAddress + '/login', loginReq, httpOptions)
+      .post('http://nhai.jaitra.com:8000/login', loginReq, httpOptions)
       .pipe(map(this.extractData), catchError(this.handleError<any>('login')))
   }
 

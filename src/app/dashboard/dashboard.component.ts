@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Observable, interval } from 'rxjs';
 import { DashboardService } from '../services/dashboard.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,23 +14,46 @@ export class DashboardComponent implements OnInit {
 
   alertsData: any = [];
   recommendationData: any = [];
-  constructor(public dashboardService: DashboardService) { }
+  alertsInitialCount: any = 0;
+
+
+  testCount: any = 3;
+
+  constructor
+    (
+      public dashboardService: DashboardService,
+      private toastr: ToastrService,
+      private cdref: ChangeDetectorRef
+    ) {
+  }
 
   ngOnInit() {
     this.getAllData();
     interval(10000).subscribe(() => this.getAllData());
   }
 
+  ngAfterContentChecked() {
+
+    this.cdref.detectChanges();
+
+  }
+
+  // Toaster Notification
+  showSuccess() {
+    this.toastr.success('Hello world!', 'Toastr fun!');
+  }
+
   getStatData() {
     this.dashboardService.getDashboardStatistics().subscribe((res: any) => {
-
     });
   }
 
   getAlerts() {
     this.dashboardService.getAlerts().subscribe((res: any) => {
-      if (res && res.data != null)
+      console.log('alerts res:', res);
+      if (res && res.data != null) {
         this.alertsData = res.data;
+      }
     });
   }
 
