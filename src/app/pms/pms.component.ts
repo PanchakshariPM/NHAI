@@ -35,6 +35,13 @@ export class PmsComponent implements OnInit {
         }
       }
     },
+    legend: {
+      show: true,
+      data: [],
+      textStyle: {
+        color: 'white'
+      }
+    },
     grid: {
       top: 70,
       bottom: 50
@@ -66,8 +73,7 @@ export class PmsComponent implements OnInit {
         },
       }
     ],
-    series: [
-    ]
+    series: []
   };
 
   public updatedOption: any;
@@ -128,14 +134,13 @@ export class PmsComponent implements OnInit {
         this.displayNoDataAvailable = false
         this.dataAvailable = true;
       }
-      // console.log('res from nhai_api_new:', response);
-      //this.chartOption.series = response.data;
 
       if (response.hasOwnProperty('data')) {
         this.chartOption.xAxis[0].data = response.labels;
         response.data.forEach(element => {
           element['smooth'] = true;
           this.chartOption.series.push(element);
+          this.chartOption.legend.data.push(element.name);
         });
       } else {
         this.chartOption.xAxis[0].data = [];
@@ -149,10 +154,8 @@ export class PmsComponent implements OnInit {
 
   selectedPlazaName() {
     this.objForGraph.entry_date = this.datePipe.transform(this.objForGraph.entry_date, "yyyy-MM-dd");
-    // console.log(this.objForGraph.entry_date);
 
     if (this.objForGraph.entry_date && this.selectedPlaza.toll_plaza_id) {
-      // this.objForGraph.entry_date
       this.objForGraph.toll_id = this.selectedPlaza.toll_plaza_id;
       this.getPMSData()
     }
