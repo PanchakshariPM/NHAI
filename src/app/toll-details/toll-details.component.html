@@ -1,13 +1,21 @@
 <div class="row">
   <div class="col-8 mr-auto">
-    <mat-card class="example-card widget">
+
+    <mat-card class="example-card widget" style="min-height: 87vh;">
+      <h5 class="ml-auto">Lane Wise Information</h5>
+
+      <ng4-loading-spinner> </ng4-loading-spinner>
+
       <div class="row" *ngIf="displayNoSensorsCondition">
-        <div class="col-12">
-          <h5>No Lane Wise Data Available For This Toll Plaza.</h5>
-        </div>
+        <mat-card class="example-card widget ml-auto mr-auto"
+          style="background: transparent; margin-top: 30% !important">
+          <div class="col-12">
+            <h5>No Lane Wise Data Available For This Toll Plaza.</h5>
+          </div>
+        </mat-card>
       </div>
 
-      <div class="row" *ngIf="displayNoSensorsCondition==false">
+      <div class="row" style="margin-top: 9% !important" *ngIf="displayNoSensorsCondition==false">
         <div class="col-6">
           <div>
             <mat-card class="example-card widget" style="background: transparent">
@@ -24,6 +32,11 @@
 
         <div class="col-6">
           <div>
+            <div class="row" *ngIf="displayNoSensorsCondition">
+              <div class="col-12">
+                <h5>No Lane Wise Data Available For This Toll Plaza.</h5>
+              </div>
+            </div>
             <mat-card class="example-card widget" style="background: transparent">
               <mat-card-header class="ml-auto float-right">
                 <mat-icon>arrow_forward</mat-icon>
@@ -65,13 +78,21 @@
                   </div>
                 </div>
 
-
                 <div class="row">
                   <div class="col-4">
                     <mat-card-subtitle style="color: white">Plaza Name:</mat-card-subtitle>
                   </div>
                   <div class="col-8">
-                    <mat-card-subtitle style="color: white"> {{contractorInfo.Name}}</mat-card-subtitle>
+                    <mat-card-subtitle style="color: white"> {{contractorInfo?.Toll}}</mat-card-subtitle>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-4">
+                    <mat-card-subtitle style="color: white">Place:</mat-card-subtitle>
+                  </div>
+                  <div class="col-8">
+                    <mat-card-subtitle style="color: white"> {{contractorInfo?.Name}}</mat-card-subtitle>
                   </div>
                 </div>
 
@@ -80,7 +101,7 @@
                     <mat-card-subtitle style="color: white">State:</mat-card-subtitle>
                   </div>
                   <div class="col-8">
-                    <mat-card-subtitle style="color: white"> {{contractorInfo.State}}</mat-card-subtitle>
+                    <mat-card-subtitle style="color: white"> {{contractorInfo?.State}}</mat-card-subtitle>
                   </div>
                 </div>
 
@@ -107,7 +128,7 @@
                     <mat-card-subtitle style="color: white">Length:</mat-card-subtitle>
                   </div>
                   <div class="col-8">
-                    <mat-card-subtitle style="color: white"> {{contractorInfo.Length}}</mat-card-subtitle>
+                    <mat-card-subtitle style="color: white"> {{contractorInfo?.Length}}</mat-card-subtitle>
                   </div>
                 </div>
 
@@ -116,7 +137,7 @@
                     <mat-card-subtitle style="color: white">Stretch:</mat-card-subtitle>
                   </div>
                   <div class="col-8">
-                    <mat-card-subtitle style="color: white"> {{contractorInfo.Stretch}}</mat-card-subtitle>
+                    <mat-card-subtitle style="color: white"> {{contractorInfo?.Stretch}}</mat-card-subtitle>
                   </div>
                 </div>
 
@@ -186,7 +207,7 @@
                   </div>
                   <div class="col-8">
                     <mat-card-subtitle style="color: white">
-                      {{contractorInfo.contact_name}}
+                      {{contractorInfo?.contact_name}}
                     </mat-card-subtitle>
                   </div>
                 </div>
@@ -197,7 +218,7 @@
                   </div>
                   <div class="col-8">
                     <mat-card-subtitle style="color: white">
-                      {{contractorInfo.contact_number}}
+                      {{contractorInfo?.contact_number}}
                     </mat-card-subtitle>
                   </div>
                 </div>
@@ -251,7 +272,8 @@
 
         <div class="col-5 ml-2">
           <mat-form-field>
-            <input matInput [matDatepicker]="fromRangePicker" [(ngModel)]="objForgetGraphs.date" placeholder="Today">
+            <input matInput [matDatepicker]="fromRangePicker" (dateChange)="selectedParameter()"
+              [(ngModel)]="objForgetGraphs.date" placeholder="Select Date">
             <mat-datepicker-toggle matSuffix [for]="fromRangePicker"></mat-datepicker-toggle>
             <mat-datepicker #fromRangePicker></mat-datepicker>
           </mat-form-field>
@@ -259,10 +281,9 @@
 
         <div class="col-5">
           <mat-form-field>
-            <mat-label>Day</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let filter of filters" (click)="selectedParameter(filter.value)"
-                [value]="filter.value">
+            <mat-label>Filter Type</mat-label>
+            <mat-select [(value)]="selectedFilter.value">
+              <mat-option *ngFor="let filter of filters" (click)="selectedParameter()" [value]="filter.value">
                 {{filter.viewValue}}
               </mat-option>
             </mat-select>
@@ -291,10 +312,10 @@
 
 <div class="row">
   <div class="col-6">
-    <app-alerts [alertsData]="alertsData" [alertsTotal]="alertsData.length"></app-alerts>
+    <app-alerts class="setHeight" [alertsData]="alertsData" [alertsTotal]="alertsData?.length"></app-alerts>
   </div>
   <div class="col-6">
-    <app-recommendation [recommendationData]="recommendationData" [recommendationTotal]="recommendationData.length">
+    <app-recommendation [recommendationData]="recommendationData" [recommendationTotal]="recommendationData?.length">
     </app-recommendation>
   </div>
 </div>

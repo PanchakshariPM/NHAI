@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../services/dashboard.service';
 import { Router } from '@angular/router';
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
 @Component({
   selector: 'app-toll-table',
@@ -24,7 +25,8 @@ export class TollTableComponent implements OnInit {
   constructor
     (
       public dashboardService: DashboardService,
-      private router: Router
+      private router: Router,
+      private spinnerService: Ng4LoadingSpinnerService
     ) {
     this.response = this.dashboardService.dashboardTableResponse;
     this.dashboardService.dashboardTableResponse.subscribe((res) => {
@@ -38,12 +40,14 @@ export class TollTableComponent implements OnInit {
 
 
   selectedPlaza(plazaInfo) {
+
     // console.log('selected Plaza:', plazaInfo);
     if (plazaInfo != null && plazaInfo != undefined) {
       this.tollDataToBeSentToNextComp.toll_plaza_id = plazaInfo.toll_plaza_id
       this.tollDataToBeSentToNextComp.toll_plaza_name = plazaInfo.toll_plaza_name
       this.dashboardService.tollPlazaInfoForTable$.next(this.tollDataToBeSentToNextComp);
       // console.log('data being sent:', this.tollDataToBeSentToNextComp);
+      this.spinnerService.show();
       this.router.navigate(['/views/toll-details', plazaInfo.toll_plaza_id])
     }
   }

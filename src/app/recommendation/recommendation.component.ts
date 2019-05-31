@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DashboardService } from '../services/dashboard.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
 @Component({
   selector: 'app-recommendation',
@@ -23,7 +24,8 @@ export class RecommendationComponent implements OnInit {
 
   public isDashboard: any;
 
-  constructor(public dashboardService: DashboardService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(public dashboardService: DashboardService, private router: Router, private activatedRoute: ActivatedRoute,
+    private spinnerService: Ng4LoadingSpinnerService) {
     this.activatedRoute.paramMap.subscribe((params: any) => {
       if (params.get('id') != '' && params.get('id') != undefined && params.get('id') != null) {
         this.isDashboard = false;
@@ -34,6 +36,7 @@ export class RecommendationComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.spinnerService.show();
   }
 
   selectedPlaza(plazaInfo) {
