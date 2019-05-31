@@ -349,11 +349,11 @@ export class TollDetailsComponent implements OnInit {
     yAxis: [
       {
         type: 'value',
-        // name: 'Average Congestion Length in mtrs.',
-        nameGap: '27',
+        name: 'Meters',
+        nameGap: '13',
         // min: '0',
         // max: '550',
-        nameLocation: 'middle',
+        nameLocation: 'end',
         splitLine: {
           show: true,
           lineStyle: {
