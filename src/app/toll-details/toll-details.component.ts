@@ -288,7 +288,7 @@ export class TollDetailsComponent implements OnInit {
 
 
   optionForPeakHourCongestion = {
-    color: ['#FF0000', '#FF2D700'],
+    color: ['#db7093', '#4682b4'],
     title: {
       text: '',
       subtext: ''
