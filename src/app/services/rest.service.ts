@@ -4,7 +4,7 @@ import { map, catchError } from 'rxjs/operators';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 
-const endpointAddress = 'http://nhai.jaitra.com:5555';
+const endpointAddress = 'http://nhai.jaitra.com:8000';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -127,7 +127,7 @@ export class RestService {
 
   getnhaitcm() {
     return this.http
-      .post(endpointAddress + '/getnhaitcm', httpOptions)
+      .post('http://nhai.jaitra.com:8000/getnhaitcm', httpOptions)
       .pipe(map(this.extractData), catchError(this.handleError<any>('getnhaitcm')))
   }
 
