@@ -4,7 +4,7 @@
     <mat-card class="example-card widget" style="min-height: 87vh;">
       <h5 class="ml-auto">Lane Wise Information</h5>
 
-      <ng4-loading-spinner> </ng4-loading-spinner>
+      <!-- <ng4-loading-spinner> </ng4-loading-spinner> -->
 
       <div class="row" *ngIf="displayNoSensorsCondition">
         <mat-card class="example-card widget ml-auto mr-auto"
@@ -14,6 +14,12 @@
           </div>
         </mat-card>
       </div>
+
+      <!-- <div *ngIf="showSpinnerForLaneWiseGraph">
+        <mat-spinner></mat-spinner> -->
+      <!-- style=" z-index: 999 !important; margin: auto; position: fixed; overflow: visible; 
+          margin-left: 50%; margin-top:50%" -->
+      <!-- </div> -->
 
       <div class="row" style="margin-top: 9% !important" *ngIf="displayNoSensorsCondition==false">
         <div class="col-6">
@@ -25,10 +31,16 @@
                 </span> -->
                 <mat-icon>arrow_back</mat-icon>
               </mat-card-header>
-              <div echarts [options]="updatedOptionForInbound" class="demo-chart"></div>
+              <div *ngIf="showSpinnerForLaneWiseGraph" style="margin-left: 50%; margin-top:50%;">
+                <mat-spinner></mat-spinner>
+              </div>
+              <div echarts [options]="updatedOptionForInbound" class="demo-chart"
+                *ngIf="showSpinnerForLaneWiseGraph==false"></div>
             </mat-card>
           </div>
         </div>
+
+
 
         <div class="col-6">
           <div>
@@ -44,7 +56,11 @@
                   Towards: Mysore
                 </span> -->
               </mat-card-header>
-              <div echarts [options]="updatedOptionForOutBound" class="demo-chart"></div>
+              <div *ngIf="showSpinnerForLaneWiseGraph" style="margin-left: 50%; margin-top:50%;">
+                <mat-spinner></mat-spinner>
+              </div>
+              <div echarts [options]="updatedOptionForOutBound" *ngIf="showSpinnerForLaneWiseGraph==false"
+                class="demo-chart"></div>
             </mat-card>
           </div>
         </div>
@@ -54,7 +70,7 @@
 
 
 
-  <div class="col-4">
+  <div class="col-4" style="height: 400px;">
 
     <section class="widget" widget>
 
@@ -64,7 +80,11 @@
         </h5>
       </div>
 
-      <div>
+      <div *ngIf="contractorLoader" style="margin-left: 50%; margin-top:50%;">
+        <mat-spinner></mat-spinner>
+      </div>
+
+      <div *ngIf="contractorLoader==false">
         <div class="row">
           <mat-card class="example-card widget m-2 w-100">
             <mat-card-content>
@@ -248,7 +268,11 @@
               <h6>Towards: Bengaluru</h6>
             </mat-card-header> -->
           <mat-card-content>
-            <div echarts [options]="updatedOptionForInboundBarGraph" class="demo-chart"></div>
+            <div *ngIf="loaderForHistocalData" style="margin-left: 50%; margin-top:50%;">
+              <mat-spinner></mat-spinner>
+            </div>
+            <div echarts [options]="updatedOptionForInboundBarGraph" class="demo-chart"
+              *ngIf="loaderForHistocalData==false"></div>
           </mat-card-content>
 
           <!-- </mat-card> -->
@@ -260,7 +284,11 @@
               <h6 class="text-right float-right">Towards: Mysore</h6>
             </mat-card-header> -->
           <mat-card-content style="margin-left: 3%">
-            <div echarts [options]="updatedOptionForOutBoundForSimpleBarGraph" class="demo-chart"></div>
+            <div *ngIf="loaderForHistocalData" style="margin-left: 50%; margin-top:50%;">
+              <mat-spinner></mat-spinner>
+            </div>
+            <div echarts [options]="updatedOptionForOutBoundForSimpleBarGraph" class="demo-chart"
+              *ngIf="loaderForHistocalData==false"></div>
           </mat-card-content>
 
           <!-- </mat-card> -->
@@ -302,7 +330,11 @@
       <!-- <mat-card class="example-card widget" style="background: transparent"> -->
 
       <mat-card-content class="pt-2">
-        <div echarts [options]="updatedOptionForPeekHourHourCongestion" class="demo-chart"></div>
+        <div *ngIf="loaderForPeakHoursData" style="margin-left: 50%; margin-top:50%;">
+          <mat-spinner></mat-spinner>
+        </div>
+        <div echarts [options]="updatedOptionForPeekHourHourCongestion" *ngIf="loaderForPeakHoursData==false"
+          class="demo-chart"></div>
       </mat-card-content>
 
       <!-- </mat-card> -->
@@ -311,11 +343,22 @@
 </div>
 
 <div class="row">
+
   <div class="col-6">
-    <app-alerts class="setHeight" [alertsData]="alertsData" [alertsTotal]="alertsData?.length"></app-alerts>
+    <div *ngIf="loaderForAlertsData" style="margin-left: 50%; margin-top:50%;">
+      <mat-spinner></mat-spinner>
+    </div>
+    <app-alerts class="setHeight" [alertsData]="alertsData" [alertsTotal]="alertsData?.length"
+      *ngIf="loaderForAlertsData==false"></app-alerts>
   </div>
+
   <div class="col-6">
-    <app-recommendation [recommendationData]="recommendationData" [recommendationTotal]="recommendationData?.length">
+    <div *ngIf="loaderForRecommendationsData" style="margin-left: 50%; margin-top:50%;">
+      <mat-spinner></mat-spinner>
+    </div>
+    <app-recommendation [recommendationData]="recommendationData" [recommendationTotal]="recommendationData?.length"
+      *ngIf="loaderForRecommendationsData==false">
     </app-recommendation>
   </div>
+
 </div>

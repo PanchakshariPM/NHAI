@@ -18,7 +18,6 @@ export interface Food {
 }
 
 
-
 @Component({
   selector: 'app-toll-details',
   templateUrl: './toll-details.component.html',
@@ -447,7 +446,12 @@ export class TollDetailsComponent implements OnInit {
 
   minDateRange = new Date('05/21/2019');
   maxDateRange = new Date();
-
+  showSpinnerForLaneWiseGraph: boolean = false;
+  contractorLoader: boolean = false;
+  loaderForHistocalData: boolean = false;
+  loaderForPeakHoursData: boolean = false;
+  loaderForAlertsData: boolean = false;
+  loaderForRecommendationsData: boolean = false;
 
   constructor
     (
@@ -456,6 +460,12 @@ export class TollDetailsComponent implements OnInit {
       private router: Router, private activatedRoute: ActivatedRoute,
       private spinnerService: Ng4LoadingSpinnerService
     ) {
+
+    this.showSpinnerForLaneWiseGraph = true;
+    this.contractorLoader = true;
+    this.loaderForHistocalData = true;
+    this.loaderForPeakHoursData = true;
+    this.loaderForAlertsData = true;
 
     this.activatedRoute.paramMap.subscribe((params: any) => {
       // console.log(params.get('id'));
@@ -466,7 +476,7 @@ export class TollDetailsComponent implements OnInit {
       }
     });
 
-    this.spinnerService.show();
+    // this.spinnerService.show();
 
     this.dashboardService.dashboardAlertResponse.subscribe((res) => {
       this.recommendationData = res.data;
@@ -540,7 +550,8 @@ export class TollDetailsComponent implements OnInit {
           } else if (!response.data) {
             this.displayNoSensorsCondition = true;
           }
-          this.spinnerService.hide();
+          // this.spinnerService.hide();
+          this.showSpinnerForLaneWiseGraph = false;
         })
       }
     })
@@ -569,6 +580,8 @@ export class TollDetailsComponent implements OnInit {
         this.optionForOutboundForSimpleBarGraph.xAxis.name = 'Hour of day';
         this.updatedOptionForOutBoundForSimpleBarGraph = Object.assign({}, this.optionForOutboundForSimpleBarGraph);
       })
+
+      this.loaderForHistocalData = false;
     })
 
 
@@ -589,7 +602,8 @@ export class TollDetailsComponent implements OnInit {
         this.optionForPeakHourCongestion.series[1].data.push(element.graph);
       });
 
-      this.updatedOptionForPeekHourHourCongestion = Object.assign({}, this.optionForPeakHourCongestion)
+      this.updatedOptionForPeekHourHourCongestion = Object.assign({}, this.optionForPeakHourCongestion);
+      this.loaderForPeakHoursData = false;
     })
 
     this.contractor_info();
@@ -597,11 +611,15 @@ export class TollDetailsComponent implements OnInit {
 
     this.restService.getNewALertPlaza(this.objForgetNewALertPlaza).subscribe(response => {
       this.alertsData = response.data;
+      this.loaderForAlertsData = false;
     })
 
     this.restService.getPlazaRecommendation(this.objForgetNewALertPlaza).subscribe(response => {
       this.recommendationData = response.data;
+      this.loaderForRecommendationsData = false;
     })
+
+
   }
 
 
@@ -613,6 +631,7 @@ export class TollDetailsComponent implements OnInit {
     this.restService.contractor_info(this.objForContractorInfo).subscribe(response => {
       // console.log('res for contractor_info:', response);
       this.contractorInfo = response.data;
+      this.contractorLoader = false;
     })
   }
 
