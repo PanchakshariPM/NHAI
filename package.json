@@ -30,7 +30,7 @@
     "echarts": "^4.2.1",
     "font-awesome": "^4.7.0",
     "howler": "^2.1.2",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "ng4-loading-spinner": "^1.2.3",
     "ngx-bootstrap": "^4.2.0",
     "ngx-echarts": "^4.1.1",
